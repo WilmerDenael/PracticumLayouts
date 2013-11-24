@@ -37,8 +37,10 @@ try
     		 user.parseUserBean(prueba);
     		 user=AlumnoDAO.login(user);
     		 if(user.isLegit()){
+    			  System.out.println("Usuario esta correcto, realizando la carga de datos");
+    			  AlumnoBean alumnoUser = AlumnoDAO.selectAlumno(user);
     			  HttpSession session = request.getSession(true);
-    	          session.setAttribute("currentSessionUser",user);
+    	          session.setAttribute("currentSessionUser",alumnoUser);
     	          response.sendRedirect("index.jsp"); //logged-in page      
     		 }else{
     			 response.sendRedirect("invalidLogin.jsp"); //error page 
@@ -49,8 +51,9 @@ try
    		 	user.parseUserBean(prueba);
    		 	user=EmpresaDAO.login(user);
    		 	if(user.isLegit()){
+//   		 		EmpresaBean empresaUser = EmpresaDAO.selectEmpresa(user);
    		 		HttpSession session = request.getSession(true);
-   		 		session.setAttribute("currentSessionUser",user);
+//   		 		session.setAttribute("currentSessionUser",empresaUser);
    		 		response.sendRedirect("index.jsp"); //logged-in page      
    		 	}else{
    		 		response.sendRedirect("invalidLogin.jsp"); //error page 

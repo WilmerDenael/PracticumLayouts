@@ -194,7 +194,7 @@ public class EmpresaDAO {
 			   
 			   //Carga Curriculum
 			   String query = "SELECT e.rut, e.email, AES_DECRYPT(pass,'gatin'), e.nombre, " +
-					   		  "e.numero_trabajadores, e.nacionalidad, e.areaLaboral, e.direccion, " +
+					   		  "e.numero_trabajadores, e.nacionalidad, e.area_laboral, e.direccion, " +
 					   		  "e.descripcion from empresas e where e.rut = ?";
 			   stmt = currentCon.prepareStatement(query);
 			   stmt.setInt(1,user.getRut());
@@ -204,15 +204,15 @@ public class EmpresaDAO {
 			   System.out.println("Query: "+ query);
 			   
 			   if(rs.next()){
-				   empresa.setRut(rs.getInt(0));
-				   empresa.setEmail(rs.getString(1));
-				   empresa.setPassword(rs.getString(2));
-				   empresa.setNombre(rs.getString(3));
-				   empresa.setNumeroTrabajadores(rs.getInt(4));
-				   empresa.setNacionalidad(rs.getString(5));
-				   empresa.setAreaLaboral(rs.getString(6));
-				   empresa.setDireccion(rs.getString(7));
-				   empresa.setDescripcion(rs.getString(8));
+				   empresa.setRut(rs.getInt(1));
+				   empresa.setEmail(rs.getString(2));
+				   empresa.setPassword(rs.getString(3));
+				   empresa.setNombre(rs.getString(4));
+				   empresa.setNumeroTrabajadores(rs.getInt(5));
+				   empresa.setNacionalidad(rs.getString(6));
+				   empresa.setAreaLaboral(rs.getString(7));
+				   empresa.setDireccion(rs.getString(8));
+				   empresa.setDescripcion(rs.getString(9));
 			   } 
 		   }catch (Exception ex){
 			   System.out.println("Log In failed: An Exception has occurred! " + ex);

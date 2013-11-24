@@ -188,34 +188,32 @@ public class AlumnoDAO{
 
 	   AlumnoBean alumno = new AlumnoBean();
 	   PreparedStatement stmt = null;
-	   
+	   System.out.println("Cargando datos del Alumno");
 	   try{
 		   currentCon = ConnectionManager.getConnection();
 		   
 		   //Carga Curriculum
-		   String query = "SELECT a.run, a.mail, AES_DECRYPT(pass,'gatin'), a.primer_nombre," +
+		   String query = "SELECT a.run, a.email, AES_DECRYPT(pass,'gatin'), a.primer_nombre," +
 				   		  "a.segundo_nombre, a.paterno, a.materno, a.estado_civil, a.direccion," +
-				   		  "a.nacionalidad, a.nacimiento, a.referencia, a.datos_adicionales" +
+				   		  "a.nacionalidad, a.nacimiento, a.referencia, a.datos_adicionales " +
 				   		  "from alumnos a where a.run = ?";
 		   stmt = currentCon.prepareStatement(query);
 		   stmt.setInt(1,user.getRut());
-		   rs = stmt.executeQuery();
-		   
 		   System.out.println("Your run is " + user.getRut());    
 		   System.out.println("Query: "+ query);
-		   
+		   rs = stmt.executeQuery();		   
 		   if(rs.next()){
-			   alumno.setRut(rs.getInt(0));
-			   alumno.setEmail(rs.getString(1));
-			   alumno.setPassword(rs.getString(2));
-			   alumno.setPrimerNombre(rs.getString(3));
-			   alumno.setSegundoNombre(rs.getString(4));
-			   alumno.setApellidoPaterno(rs.getString(5));
-			   alumno.setApellidoMaterno(rs.getString(6));
-			   alumno.setEstadoCivil(rs.getString(7));
-			   alumno.setDireccion(rs.getString(8));
-			   alumno.setNacionalidad(rs.getString(9));
-			   alumno.setFechaNacimiento(rs.getDate(10));
+			   alumno.setRut(rs.getInt(1));
+			   alumno.setEmail(rs.getString(2));
+			   alumno.setPassword(rs.getString(3));
+			   alumno.setPrimerNombre(rs.getString(4));
+			   alumno.setSegundoNombre(rs.getString(5));
+			   alumno.setApellidoPaterno(rs.getString(6));
+			   alumno.setApellidoMaterno(rs.getString(7));
+			   alumno.setEstadoCivil(rs.getString(8));
+			   alumno.setDireccion(rs.getString(9));
+			   alumno.setNacionalidad(rs.getString(10));
+			   alumno.setFechaNacimiento(rs.getDate(11));
 		   } 
 	   }catch (Exception ex){
 		   System.out.println("Log In failed: An Exception has occurred! " + ex);

@@ -2,7 +2,6 @@ package com.practicum.util;
 
 public class EmpresaBean extends UserBean {
 	
-	private String email;
 	private String nombre;
 	private int numeroTrabajadores;
 	private String nacionalidad;
@@ -10,12 +9,7 @@ public class EmpresaBean extends UserBean {
 	private String direccion;
 	private String descripcion;
 	
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
+	
 	public String getNombre() {
 		return nombre;
 	}
