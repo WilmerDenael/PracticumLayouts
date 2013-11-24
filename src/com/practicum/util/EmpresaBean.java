@@ -7,7 +7,9 @@ public class EmpresaBean extends UserBean {
 	private int numeroTrabajadores;
 	private String nacionalidad;
 	private String areaLaboral;
+	private String direccion;
 	private String descripcion;
+	
 	public String getEmail() {
 		return email;
 	}
@@ -37,6 +39,12 @@ public class EmpresaBean extends UserBean {
 	}
 	public void setAreaLaboral(String areaLaboral) {
 		this.areaLaboral = areaLaboral;
+	}
+	public String getDireccion() {
+		return direccion;
+	}
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
 	}
 	public String getDescripcion() {
 		return descripcion;

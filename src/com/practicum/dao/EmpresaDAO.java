@@ -184,5 +184,43 @@ public class EmpresaDAO {
 		  return bean;
 		  }
 	   
+	   public static EmpresaBean selectEmpresa(UserBean user){
+
+		   EmpresaBean empresa = new EmpresaBean();
+		   PreparedStatement stmt = null;
+		   
+		   try{
+			   currentCon = ConnectionManager.getConnection();
+			   
+			   //Carga Curriculum
+			   String query = "SELECT e.rut, e.email, AES_DECRYPT(pass,'gatin'), e.nombre, " +
+					   		  "e.numero_trabajadores, e.nacionalidad, e.areaLaboral, e.direccion, " +
+					   		  "e.descripcion from empresas e where e.rut = ?";
+			   stmt = currentCon.prepareStatement(query);
+			   stmt.setInt(1,user.getRut());
+			   rs = stmt.executeQuery();
+			   
+			   System.out.println("Your rut is " + user.getRut());    
+			   System.out.println("Query: "+ query);
+			   
+			   if(rs.next()){
+				   empresa.setRut(rs.getInt(0));
+				   empresa.setEmail(rs.getString(1));
+				   empresa.setPassword(rs.getString(2));
+				   empresa.setNombre(rs.getString(3));
+				   empresa.setNumeroTrabajadores(rs.getInt(4));
+				   empresa.setNacionalidad(rs.getString(5));
+				   empresa.setAreaLaboral(rs.getString(6));
+				   empresa.setDireccion(rs.getString(7));
+				   empresa.setDescripcion(rs.getString(8));
+			   } 
+		   }catch (Exception ex){
+			   System.out.println("Log In failed: An Exception has occurred! " + ex);
+			   return null;
+		   }
+
+		   return empresa ;
+	   }
+	   
 
 }
