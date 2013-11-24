@@ -1,0 +1,23 @@
+Les dejo un resumen de los atajos que conozco en el eclipse para que la programacion sea más rapida y facil
+
+1- ctrl + shift + c comentar/descomentar seccion de codigo
+2- ctrl + d borrar la linea
+3- alt + arriba/abajo mover seccion de codigo 
+4- ctrl + alt + arriba/abajo copiar linea o fragmento de codigo y replicarlo arriba/abajo
+5- ctrl + arriba/abajo subir o bajar la pantalla sin mover la linea donde estas
+6- ctrl + S guardar
+7- ctrl + 1 abrir las sugerencias para corregir errores
+
+8- Ctrl + espacio autocompletar, funcion muy util que sugiere y autocompleta codigo en base a lo que se a escrito
+
+Ej:
+
+syso (ctrl + espacio) eclipse genera System.out.println();
+if (ctrl + espacio) eclipse ofrece tipo de clausula if-> if else, if else if, etc.
+for (ctrl + espacio) eclipse ofrece los tipos de for (util para iterar sobre lista ver ejemplos en CurriculumDAO.ingresarCurriculum())
+
+autocompletar variables/ clases al escribir algunas letras de ellas
+Ej:
+String cadena1;
+cad (ctrl+espacio) eclipse recomienda cadena1
+AlumnoBean alumno = new (ctrl + espacio) sugiere AlumnoBean()

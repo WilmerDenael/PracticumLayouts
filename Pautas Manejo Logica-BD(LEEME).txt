@@ -1,0 +1,28 @@
+Pautas Manejo Logica-BD
+
+Manejo Java:
+-Las clases deben ser creadas con mayusculas en la primera letra y mayusculas en la primera letra de la segunda palabra ej: "Palabra1Palabra2.java"
+-Los nombres de la clase deben ser en singular, ej: Alumno, Empresa, Perfil.
+-Los nombres de los atributos van con minusculas y singulares (a excepcion de arreglos o listas) y la segunda palabra con mayuscula ej: String int palabra1Palabra2
+-Los nombres de los metodos reflejan su funcionalidad y van con minusculas la primera palabra y mayuscula la segunda ej: listarInformacionPersonal()
+-Los nombres de los servlet reflejan funcionalidad y agregan la palabra servlet al final ej: agregarCurriculumSerlvet.java
+-Los conectores a la base de datos llevan DAO al final ej: CurriculumDAO.java
+-La clase connector maneja las conexiones, UTILIZAR SOLO ESA CLASE PARA EL CONNECTOR
+-El manejo del web.xml se maneja con mayusculas al igual que el nombre de las clases, el mapeo de uri con minuscula ej:
+  <servlet>
+      <servlet-name>RegistroServlet</servlet-name>
+      <servlet-class>com.practicum.servlet.RegistroServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>RegistroServlet</servlet-name>
+      <url-pattern>/registrar</url-pattern>
+  </servlet-mapping>
+
+
+Manejo BD:
+-los nombres de las tablas van en plural
+-si son nombres compuestos van separados por un guion bajo _ ej: palabra1_palabra2
+-los atributos van en singular
+
+IMPORTANTE:
+Registrar y subir al github cada cambio realizado con su descripcion.
