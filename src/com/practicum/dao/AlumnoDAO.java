@@ -205,9 +205,9 @@ public class AlumnoDAO{
 		   System.out.println("Query: "+ query);
 		   
 		   if(rs.next()){
-			   alumno.setRun(rs.getInt(0));
+			   alumno.setRut(rs.getInt(0));
 			   alumno.setEmail(rs.getString(1));
-			   alumno.setPass(rs.getString(2));
+			   alumno.setPassword(rs.getString(2));
 			   alumno.setPrimerNombre(rs.getString(3));
 			   alumno.setSegundoNombre(rs.getString(4));
 			   alumno.setApellidoPaterno(rs.getString(5));
