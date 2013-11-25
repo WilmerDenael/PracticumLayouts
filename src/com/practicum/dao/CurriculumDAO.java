@@ -23,22 +23,28 @@ public class CurriculumDAO {
 		         stmt.executeUpdate(query);
 		         System.out.println("Curriculum Agregado");
 		         List<DatoAcademico> academicos =curriculum.getDatosAcademicos();
-		         for (DatoAcademico datoAcademico : academicos) {
-		        	 String query2 = "Insert into datos_academicos (run,id_curriculum,establecimiento,fin,descripcion) values ("+curriculum.getId()+","+bean.getRut()+",'"+datoAcademico.getEstablecimiento()+"',"+datoAcademico.getFin()+")";// OJO CON LOS DATE
-		        	 stmt=currentCon.createStatement();
-			         stmt.executeUpdate(query);
+		         if (!academicos.isEmpty()) {
+		        	 for (DatoAcademico datoAcademico : academicos) {
+		        		 String query2 = "Insert into datos_academicos (run,id_curriculum,establecimiento,fin,descripcion) values ("+curriculum.getId()+","+bean.getRut()+",'"+datoAcademico.getEstablecimiento()+"',"+datoAcademico.getFin()+")";// OJO CON LOS DATE
+		        		 stmt=currentCon.createStatement();
+		        		 stmt.executeUpdate(query);
+		        	 }					
 				}
 		         List<HistorialLaboral> laborales=curriculum.getLaborales();
-		         for (HistorialLaboral historialLaboral : laborales) {
-		        	 String query2 = "Insert into historial_laboral (run,id_curriculum,establecimiento,cargo,inicio,fin,descripcion) values ("+curriculum.getId()+","+bean.getRut()+",'"+historialLaboral.getEstablecimiento()+"',"+historialLaboral.getInicio()+","+historialLaboral.getFin()+")"; // OJO CON LOS DATE
-		        	 stmt=currentCon.createStatement();
-			         stmt.executeUpdate(query);
+		         if (!laborales.isEmpty()) {
+		        	 for (HistorialLaboral historialLaboral : laborales) {
+		        		 String query2 = "Insert into historial_laboral (run,id_curriculum,establecimiento,cargo,inicio,fin,descripcion) values ("+curriculum.getId()+","+bean.getRut()+",'"+historialLaboral.getEstablecimiento()+"',"+historialLaboral.getInicio()+","+historialLaboral.getFin()+")"; // OJO CON LOS DATE
+		        		 stmt=currentCon.createStatement();
+		        		 stmt.executeUpdate(query);
+		        	 }					
 				}
 		         List<Idioma> idiomas= curriculum.getIdiomas();
-		         for (Idioma idioma : idiomas) {
-		        	 String query2 = "Insert into manejo_idiomas (run,id_curriculum,idioma,nivel) values ("+curriculum.getId()+","+bean.getRut()+",'"+idioma.getIdioma()+"','"+idioma.getNivel()+"')"; 
-		        	 stmt=currentCon.createStatement();
-			         stmt.executeUpdate(query);
+		         if (idiomas.isEmpty()) {
+		        	 for (Idioma idioma : idiomas) {
+		        		 String query2 = "Insert into manejo_idiomas (run,id_curriculum,idioma,nivel) values ("+curriculum.getId()+","+bean.getRut()+",'"+idioma.getIdioma()+"','"+idioma.getNivel()+"')"; 
+		        		 stmt=currentCon.createStatement();
+		        		 stmt.executeUpdate(query);					
+		        	 } 
 				}
 		   }catch (Exception ex) {
 		         System.out.println("Log In failed: An Exception has occurred! " + ex);
@@ -46,6 +52,9 @@ public class CurriculumDAO {
 		   
 	   }
 	   
+/** Metodo para obtener nueva version del curriculum
+ * No utilizado actualmente 
+ */
 	   public static int getNextCurriculumVersion(UserBean bean){ 
 		      Statement stmt = null;    	
 		      int rut = bean.getRut();    
@@ -71,7 +80,7 @@ public class CurriculumDAO {
 		      } else {
 		    	  System.out.println("Hay curriculums anteriores");
 		    	  int ver = rs.getInt(1)+1;
-		    	  return 0;
+		    	  return ver;
 		      }
 		   } 
 		   catch (Exception ex) 
