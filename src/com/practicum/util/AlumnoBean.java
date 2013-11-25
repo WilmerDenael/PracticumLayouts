@@ -13,6 +13,8 @@ public class AlumnoBean extends UserBean{
 	private String direccion;
 	private String nacionalidad;
 	private Date fechaNacimiento;
+	private String referencia;
+	private String datosExtra;
 	private Curriculum curriculum;
 	private Perfil perfil;
 	
@@ -65,7 +67,18 @@ public class AlumnoBean extends UserBean{
 	public void setFechaNacimiento(Date fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
-
+	public String getReferencia() {
+		return referencia;
+	}
+	public void setReferencia(String referencias) {
+		this.referencia = referencias;
+	}
+	public String getDatosExtra() {
+		return datosExtra;
+	}
+	public void setDatosExtra(String datosExtras) {
+		this.datosExtra = datosExtras;
+	}
 	public Perfil getPerfil() {
 		return perfil;
 	}

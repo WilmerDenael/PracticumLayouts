@@ -214,6 +214,8 @@ public class AlumnoDAO{
 			   alumno.setDireccion(rs.getString(9));
 			   alumno.setNacionalidad(rs.getString(10));
 			   alumno.setFechaNacimiento(rs.getDate(11));
+			   alumno.setReferencia(rs.getString(12));
+			   alumno.setDatosExtra(rs.getString(13));
 			   alumno.setLegit(user.isLegit());
 			   alumno.setValid(user.isValid());
 			   alumno.setType(user.getType());
