@@ -121,7 +121,7 @@ create table empresas(
 	nombre varchar(30),
 	numero_trabajadores int,
 	nacionalidad varchar(30),
-	areaLaboral text,
+	area_laboral text,
 	direccion text,
 	descripcion text,
 	foreign key(rut) references usuarios(id) on delete cascade on update cascade,
