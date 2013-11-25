@@ -15,7 +15,8 @@
 		Estado civil: <%= currentAlumno.getEstadoCivil()%></br>
 		Dirección: <%= currentAlumno.getDireccion()%></br>
 		Nacionalidad: <%= currentAlumno.getNacionalidad()%></br>
-		<!-- POSIBLEMENTE DESPUES AGREGAR REFERENCIAS Y DATOS EXTRAS -->
+		Referencias: <%= currentAlumno.getReferencia()%></br>
+		Datos extras: <%= currentAlumno.getDatosExtra()%></br>
 		</p>
 		
 	<% }else if (currentUser.getType() == 2) { %>

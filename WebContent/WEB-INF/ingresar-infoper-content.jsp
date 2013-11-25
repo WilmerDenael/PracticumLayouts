@@ -25,9 +25,10 @@
 			<input type="text" name="nacionalidad"></br>
 			<label>Fecha de nacimiento.</label></br>
 			<input type="date" name="nacimiento"></br>
-			<!--  <label>Conocimiento idioma.</label></br> 
-			<input type="text" name="idioma"></br>-->
-			<!-- HAY QUE AGREGAR IDIOMAS, REFERENCIAS, DATOS EXTRAS -->
+			<label>Referencias.</label></br>
+			<input type="text" name="referencia"></br>
+			<label>Datos extras.</label></br>
+			<input type="text" name="datosExtra"></br>
 			</br><input type="submit" value="Guardar">
 		</form></br>
 		

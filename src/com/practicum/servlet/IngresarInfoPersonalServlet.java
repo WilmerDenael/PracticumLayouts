@@ -34,7 +34,6 @@ public class IngresarInfoPersonalServlet extends HttpServlet {
 			AlumnoBean alumnob = new AlumnoBean();
 			
 			userb.parseUserBean(currentUser);
-			//alumnob.parseUserBean(currentUser);
 			
 			//ACA CAPTURAR LOS DATOS DEL FORMULARIO
 			String primerNombre =request.getParameter("primerNombre");
@@ -44,25 +43,16 @@ public class IngresarInfoPersonalServlet extends HttpServlet {
 			String civil =request.getParameter("civil");
 			String direccion =request.getParameter("direccion");
 			String nacionalidad =request.getParameter("nacionalidad");
-			String nacimiento =request.getParameter("nacimiento");
-			//String referencia =request.getParameter("referencia");
-			//String datosExtras =request.getParameter("datosExtras");
+			String nacimiento =request.getParameter("nacimiento"); //FALTA GUARDAR ESTE DATO !
+			String referencia =request.getParameter("referencia");
+			String datosExtra =request.getParameter("datosExtra");
 			
-	
-			System.out.println(primerNombre);
-			System.out.println(segundoNombre);
-			System.out.println(paterno);
-			System.out.println(materno);
-			System.out.println(civil);
-			System.out.println(direccion);
-			System.out.println(nacionalidad);
-			System.out.println(nacimiento);
+
 			
-								
 			userb.setRut(currentUser.getRut());	
 			System.out.println(userb.getRut());
 			
-			//VALIDACION DE CAMBIOS (DEFINIR BIEN LOS UPDATES)
+			//VALIDACION DE CAMBIOS
 				if(!primerNombre.equals("")){
 					alumnob.setPrimerNombre(primerNombre);
 					flagAlumno[0]=UserDAO.genericStringUpdate("alumnos", "primer_Nombre", alumnob.getPrimerNombre(), "run", userb.getRut());
@@ -91,33 +81,28 @@ public class IngresarInfoPersonalServlet extends HttpServlet {
 					alumnob.setNacionalidad(nacionalidad);
 					flagAlumno[6]=UserDAO.genericStringUpdate("alumnos", "nacionalidad", alumnob.getNacionalidad(), "run", userb.getRut());
 				}else flagAlumno[6]=false;
+				if(!referencia.equals("")){
+					alumnob.setReferencia(referencia);
+					flagAlumno[7]=UserDAO.genericStringUpdate("alumnos", "referencia", alumnob.getReferencia(), "run", userb.getRut());
+				}else flagAlumno[7]=false;
+				if(!datosExtra.equals("")){
+					alumnob.setDatosExtra(datosExtra);
+					flagAlumno[8]=UserDAO.genericStringUpdate("alumnos", "datos_adicionales", alumnob.getDatosExtra(), "run", userb.getRut());
+				}else flagAlumno[8]=false;
 				/*if(!nacimiento.equals("")){
 					alumnob.setFechaNacimiento(nacimiento);
-					flagAlumno[6]=UserDAO.genericDateUpdate("alumnos", "nacimiento", alumnob.getFechaNacimiento(), "run", userb.getRut());
-				}else flagAlumno[6]=false;*/
+					flagAlumno[9]=UserDAO.genericDateUpdate("alumnos", "nacimiento", alumnob.getFechaNacimiento(), "run", userb.getRut());
+				}else flagAlumno[9]=false;*/
 				
 				
-				if((flagAlumno[0]||flagAlumno[1]||flagAlumno[2]||flagAlumno[3]||flagAlumno[4]||flagAlumno[5]||flagAlumno[6])==true){
+				if((flagAlumno[0]||flagAlumno[1]||flagAlumno[2]||flagAlumno[3]||flagAlumno[4]||
+						flagAlumno[5]||flagAlumno[6]||flagAlumno[7]||flagAlumno[8])==true){
 					session.setAttribute("currentSessionUser",userb); 
 					response.sendRedirect("modificacionExitoso.jsp");
 				}else{
 					response.sendRedirect("errorModificacion.jsp");
 				}
-			
-			
-
-			/*if (user.isValid())
-			{
-	    
-				session.setAttribute("currentSessionUser",user); 
-				response.sendRedirect("jsp/modificacionExitoso.jsp"); //logged-in page      		
-			}
-
-			else 
-				response.sendRedirect("jsp/errorModificacion.jsp"); //error page */
 		} 
-
-
 		catch (Throwable theException) 	    
 		{
 			System.out.println(theException); 
