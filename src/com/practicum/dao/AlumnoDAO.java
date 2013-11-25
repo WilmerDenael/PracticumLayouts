@@ -228,5 +228,44 @@ public class AlumnoDAO{
 	   return alumno ; //se retorna el alumno con sus datos, pero sin el curriculum
    }
    
+   public static List<AlumnoBean> buscarNombreApellido(String nombre, String apellido){
+		   
+		   List<AlumnoBean> alumnos = new ArrayList<AlumnoBean>();
+		   PreparedStatement stmt = null;
+		   System.out.println("Preparando Consulta...");
+		   try{
+			   currentCon = ConnectionManager.getConnection();
+			   
+			   //Carga Curriculum
+			   String query = "SELECT a.run, a.primer_nombre, a.segundo_nombre, a.paterno, a.materno " +
+					   		  "from alumnos a " +
+					   		  "where a.primer_nombre like ? or a.segundo_nombre like ? or " +
+					   		  "paterno like ? or materno ? ";
+			   System.out.println("Query :" + query);
+			   stmt = currentCon.prepareStatement(query);
+			   stmt.setString(1,"%" + nombre + "%");
+			   stmt.setString(2,"%" + nombre + "%");
+			   stmt.setString(3,"%" + apellido + "%");
+			   stmt.setString(4,"%" + apellido + "%");
+			   System.out.println("Nombre y Apellido: " + nombre + " " + apellido);    
+			   System.out.println("Query: "+ query);
+			   rs = stmt.executeQuery();		   
+			   while(rs.next()){
+				   AlumnoBean alumno = new AlumnoBean();
+				   alumno.setRut(rs.getInt(1));
+				   alumno.setPrimerNombre(rs.getString(2));
+				   alumno.setSegundoNombre(rs.getString(3));
+				   alumno.setApellidoPaterno(rs.getString(4));
+				   alumno.setApellidoMaterno(rs.getString(5));
+				   alumnos.add(alumno);
+			   } 
+		   }catch (Exception ex){
+			   System.out.println("Log In failed: An Exception has occurred! " + ex);
+			   return null;
+		   }
+
+		   return alumnos ; //se retorna la lista de alumnos solamente con su run y su nombre completo
+	   }
+   
 }
 
