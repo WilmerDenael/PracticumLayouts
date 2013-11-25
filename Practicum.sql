@@ -55,6 +55,30 @@ create table areas_interes(
 	primary key(id)
 	);
 	
+insert into areas_interes values(null,'Lenguaje Java',1,0,0);
+insert into areas_interes values(null,'Lenguaje Ruby',1,0,0);
+insert into areas_interes values(null,'Lenguaje Python',1,0,0);
+insert into areas_interes values(null,'Lenguaje C',1,0,0);
+insert into areas_interes values(null,'Lenguaje C++',1,0,0);
+insert into areas_interes values(null,'Lenguaje C#',1,0,0);
+insert into areas_interes values(null,'UML',1,0,0);
+insert into areas_interes values(null,'IDE Eclipse',1,0,0);
+insert into areas_interes values(null,'IDE NetBeans',1,0,0);
+insert into areas_interes values(null,'IDE TopBraid',1,0,0);
+insert into areas_interes values(null,'Lenguaje HTML',1,0,0);
+insert into areas_interes values(null,'Lenguaje CSS',1,0,0);
+insert into areas_interes values(null,'Lenguaje XML',1,0,0);
+insert into areas_interes values(null,'Lenguaje RDF',1,0,0);
+insert into areas_interes values(null,'Lenguaje WSDL',1,0,0);
+insert into areas_interes values(null,'IDE Knime',0,1,0);
+insert into areas_interes values(null,'MySql',0,1,0);
+insert into areas_interes values(null,'PostgresSql',0,1,0);
+insert into areas_interes values(null,'Lenguaje Prolog',0,1,0);
+insert into areas_interes values(null,'Workbench',0,1,0);
+insert into areas_interes values(null,'Lenguaje PHP',1,1,0);
+insert into areas_interes values(null,'IDE Core',0,0,1);
+
+	
 -- Compuesta de areas de interes y curriculum	
 create table curriculums_areas_interes(
 	id int,
@@ -95,6 +119,8 @@ create table idiomas(
 	idioma varchar(30),
 	primary key(id)
 	);
+	
+insert into idiomas values (null,'Ingles') , (null,'Portugues') , (null,'Frances') , (null,'Aleman') , (null,'Chino Mandarin');
 	
 create table manejo_idiomas(
 	id int,
