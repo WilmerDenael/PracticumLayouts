@@ -44,4 +44,12 @@
       <servlet-name>ingresarInfoPersonalServlet</servlet-name>
       <url-pattern>/ingresarInfoPersonal</url-pattern>
   </servlet-mapping>
+  <servlet>
+      <servlet-name>ingresarInfoEmpresaServlet</servlet-name>
+      <servlet-class>com.practicum.servlet.IngresarInfoEmpresaServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>ingresarInfoEmpresaServlet</servlet-name>
+      <url-pattern>/ingresarInfoEmpresa</url-pattern>
+  </servlet-mapping>
 </web-app>

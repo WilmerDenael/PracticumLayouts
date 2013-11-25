@@ -6,9 +6,12 @@
 
 <div id="backContenido">
 	<div id="contenido">
-		<h2>Ingreso de datos personales:</h2>
-		<form action="/Practicum/ingresarInfoPersonal">
+	
+	<% if (currentUser.getType() == 1) {%>
 
+		<form action="/Practicum/ingresarInfoPersonal">
+			<h2>Ingreso de datos personales:</h2>
+		
 			<label>Nombre completo.</label></br>
 			<input type="text" name="primerNombre" placeholder="primer nombre" >
 			<input type="text" name="segundoNombre" placeholder="segundo nombre" >
@@ -27,7 +30,29 @@
 			<!-- HAY QUE AGREGAR IDIOMAS, REFERENCIAS, DATOS EXTRAS -->
 			</br><input type="submit" value="Guardar">
 		</form></br>
-
+		
+<% }else if (currentUser.getType() == 2) { %>
+		<form action="/Practicum/ingresarInfoEmpresa">
+			<h2>Ingreso de datos de empresa:</h2>
+		
+			<label>Nombre empresa.</label></br>
+			<input type="text" name="nombre" ></br>
+			<label>Numero de trabajadores.</label></br>
+			<input type="number" min=1 name="numTrab"></br>
+			<label>Nacionalidad.</label></br>
+			<input type="text" name="nacionalidad"></br>
+			<label>Area laboral.</label></br>
+			<input type="text" name="areaLaboral"></br>
+			<label>Direccion.</label></br>
+			<input type="text" name="direccion"></br>
+			<label>Descripcion.</label></br>
+			<input type="text" name="descripcion"></br>
+		</br><input type="submit" value="Guardar">
+		</form></br>
+		
+<% } %>
+	
+	
 		<a href="index.jsp" target="_self"> <input type="button" name="boton" value="volver" /> </a>
   	</div>
 </div>

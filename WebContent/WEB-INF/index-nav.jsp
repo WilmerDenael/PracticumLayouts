@@ -14,8 +14,7 @@
 		<a href="#" class="buttonNav"><li>Alumno</li></a>
 	</ul>
 </nav>
-<% } %>
-<% if (currentUser.getType() == 2) { %>
+<% }else if (currentUser.getType() == 2) { %>
 	<nav>
 	<ul>
 		<a href="index.jsp" class="buttonNav"><li>Inicio</li></a>
