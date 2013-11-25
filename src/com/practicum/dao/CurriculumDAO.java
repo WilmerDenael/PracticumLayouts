@@ -86,25 +86,31 @@ public class CurriculumDAO {
 		   Curriculum curriculum = new Curriculum();
 		   PreparedStatement stmt = null;
 		   
+		   System.out.println("Su run es: " + run);
+		   System.out.println("Su idCurriculum es: " + idCurriculum);
+		   
 		   try{
 			   currentCon = ConnectionManager.getConnection();
 			   
 			   //Carga Curriculum
-			   String query = "SELECT * FROM curriculums where run=? and id=?";
+			   String query = "SELECT * FROM curriculums where run= ? and id= ?";
+			   System.out.println("query: " + query);
 			   stmt = currentCon.prepareStatement(query);
 			   stmt.setInt(1,run);
 			   stmt.setInt(2,idCurriculum);
 			   rs = stmt.executeQuery();
-			   while(rs.next()){
-				   curriculum.setId(rs.getInt(0));
-				   curriculum.setRun(rs.getInt(1));
-				   curriculum.setActive(rs.getBoolean(2));
-				   curriculum.setUltimaActualizacion(rs.getDate(3));
-				   curriculum.setConfidencial(rs.getBoolean(4));  
+			   if(rs.next()){
+				   curriculum.setId(rs.getInt(1));
+				   curriculum.setRun(rs.getInt(2));
+				   curriculum.setActive(rs.getBoolean(3));
+				   curriculum.setUltimaActualizacion(rs.getDate(4));
+				   curriculum.setConfidencial(rs.getBoolean(5));  
 			   }
-			  
+			   System.out.println("Carga de Curriculum exitosa");
+			   
 			   //Carga DatosAcademicos
-			   query = "SELECT * FROM datos_academicos where run=? and id_curriculum=?";
+			   query = "SELECT * FROM datos_academicos where run= ? and id_curriculum= ?";
+			   System.out.println("query: " + query);
 			   stmt = currentCon.prepareStatement(query);
 			   stmt.setInt(1,run);
 			   stmt.setInt(2,idCurriculum);
@@ -112,19 +118,21 @@ public class CurriculumDAO {
 			   ArrayList<DatoAcademico> datosAcademicos = new ArrayList<DatoAcademico>();
 			   while(rs.next()){
 				   DatoAcademico datoAcademico = new DatoAcademico();
-				   datoAcademico.setId(rs.getInt(0));
-				   datoAcademico.setRun(rs.getInt(1));
-				   datoAcademico.setIdCurriculum(rs.getInt(2));
-				   datoAcademico.setEstablecimiento(rs.getString(3));
-				   datoAcademico.setInicio(rs.getDate(4));
-				   datoAcademico.setFin(rs.getDate(5));
-				   datoAcademico.setDescripcion(rs.getString(6));
+				   datoAcademico.setId(rs.getInt(1));
+				   datoAcademico.setRun(rs.getInt(2));
+				   datoAcademico.setIdCurriculum(rs.getInt(3));
+				   datoAcademico.setEstablecimiento(rs.getString(4));
+				   datoAcademico.setInicio(rs.getDate(5));
+				   datoAcademico.setFin(rs.getDate(6));
+				   datoAcademico.setDescripcion(rs.getString(7));
 				   datosAcademicos.add(datoAcademico);
 			   }
 			   curriculum.setDatosAcademicos(datosAcademicos);
+			   System.out.println("Carga de Datos Academicos exitosa");
 			   
 			   //Carga HistorialLaboral
 			   query = "SELECT * FROM historial_laboral where run=? and id_curriculum=?";
+			   System.out.println("Query: " + query );
 			   stmt = currentCon.prepareStatement(query);
 			   stmt.setInt(1,run);
 			   stmt.setInt(2,idCurriculum);
@@ -132,22 +140,24 @@ public class CurriculumDAO {
 			   ArrayList<HistorialLaboral> laborales = new ArrayList<HistorialLaboral>();
 			   while(rs.next()){
 				   HistorialLaboral laboral = new HistorialLaboral();
-				   laboral.setId(rs.getInt(0));
-				   laboral.setRun(rs.getInt(1));
-				   laboral.setIdCurriculum(rs.getInt(2));
-				   laboral.setEstablecimiento(rs.getString(3));
-				   laboral.setCargo(rs.getString(4));
-				   laboral.setInicio(rs.getDate(5));
-				   laboral.setFin(rs.getDate(6));
-				   laboral.setDescripcion(rs.getString(7));
+				   laboral.setId(rs.getInt(1));
+				   laboral.setRun(rs.getInt(2));
+				   laboral.setIdCurriculum(rs.getInt(3));
+				   laboral.setEstablecimiento(rs.getString(4));
+				   laboral.setCargo(rs.getString(5));
+				   laboral.setInicio(rs.getDate(6));
+				   laboral.setFin(rs.getDate(7));
+				   laboral.setDescripcion(rs.getString(8));
 				   laborales.add(laboral);
 			   }
 			   curriculum.setLaborales(laborales);
+			   System.out.println("Carga de Antecedentes Laborales exitosa");
 			   
 			   //Carga Idiomas
 			   query = "SELECT i.idioma, mi.run, mi.id_curriculum, mi.nivel " +
 					   "FROM idiomas i, manejo_idiomas mi " +
 					   "WHERE mi.run = ? AND mi.id_curriculum = ? AND i.id = mi.id";
+			   System.out.println("Query: " + query);
 			   stmt = currentCon.prepareStatement(query);
 			   stmt.setInt(1,run);
 			   stmt.setInt(2,idCurriculum);
@@ -155,18 +165,20 @@ public class CurriculumDAO {
 			   ArrayList<Idioma> idiomas = new ArrayList<Idioma>();
 			   while(rs.next()){
 				   Idioma idioma = new Idioma();
-				   idioma.setIdioma(rs.getString(0));
-				   idioma.setRun(rs.getInt(1));
-				   idioma.setIdCurriculum(rs.getInt(2));
-				   idioma.setNivel(rs.getString(3));
+				   idioma.setIdioma(rs.getString(1));
+				   idioma.setRun(rs.getInt(2));
+				   idioma.setIdCurriculum(rs.getInt(3));
+				   idioma.setNivel(rs.getString(4));
 				   idiomas.add(idioma);
 			   }
 			   curriculum.setIdiomas(idiomas);
+			   System.out.println("Carga de Idiomas exitosa");
 			   
 			   //Carga Intereses
 			   query = "SELECT cai.id, cai.run, cai.id_curriculum, sai.sub_area " +
 					   "FROM  curriculums_areas_interes cai, sub_areas_interes sai " +
 					   "WHERE cai.run = ? AND cai.id_curriculum = ? AND cai.id = sai.id";
+			   System.out.println("Query: " + query);
 			   stmt = currentCon.prepareStatement(query);
 			   stmt.setInt(1,run);
 			   stmt.setInt(2,idCurriculum);
@@ -174,20 +186,21 @@ public class CurriculumDAO {
 			   ArrayList<AreaInteres> intereses = new ArrayList<AreaInteres>();
 			   while(rs.next()){
 				   AreaInteres interes = new AreaInteres();
-				   interes.setId(rs.getInt(0));
-				   interes.setRun(rs.getInt(1));
-				   interes.setIdCurriculum(rs.getInt(2));
-				   interes.setArea(rs.getString(3));
+				   interes.setId(rs.getInt(1));
+				   interes.setRun(rs.getInt(2));
+				   interes.setIdCurriculum(rs.getInt(3));
+				   interes.setArea(rs.getString(4));
 				   intereses.add(interes);
 			   }
 			   curriculum.setIntereses(intereses);
+			   System.out.println("Carga de Intereses exitosa");
 			   
 		   }catch (Exception ex){
 			   System.out.println("Log In failed: An Exception has occurred! " + ex);
 			   return null;
 		   }
 
-		   return curriculum;//comentar
+		   return curriculum;
 	   }
 
 }

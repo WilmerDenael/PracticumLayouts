@@ -45,31 +45,23 @@ create table curriculums(
 	primary key(run,id)
 	);
 
--- Areas Principales de interes
+-- Areas Principales de interes y a que pertenecen
 create table areas_interes(
 	id int auto_increment,
 	area varchar(50),
+	desarrollo int,
+	base_de_datos int,
+	redes int,
 	primary key(id)
 	);
 	
-insert into areas_interes (area) values ('Desarrollo') , ('Base de Datos') , ('Redes');
-
--- Sub Areas de interes, cada una de ellas tiene relación con 3 áreas principales
-create table sub_areas_interes(
-	id int auto_increment,
-	id_area int,
-	sub_area varchar(50),
-	primary key(id),
-	foreign key(id_area) references areas_interes(id) on delete cascade on update cascade
-	);
-	
-	
+-- Compuesta de areas de interes y curriculum	
 create table curriculums_areas_interes(
 	id int,
 	run int,
 	id_curriculum int,
 	foreign key(run,id_curriculum) references curriculums(run,id) on delete cascade on update cascade,
-	foreign key(id) references sub_areas_interes(id) on delete cascade on update cascade,
+	foreign key(id) references areas_interes(id) on delete cascade on update cascade,
 	primary key(id,run,id_curriculum)
 	);
 	
@@ -135,9 +127,19 @@ create table profesores(
 	nombre varchar(30),
 	paterno varchar(30),
 	ramo text,
+	titulo text,
 	foreign key(run) references usuarios(id) on delete cascade on update cascade,
 	primary key(run)
 	);
+	
+create table recomendaciones(
+	run_profesor int,
+	run_alumno int,
+	recomendacion text,
+	foreign key(run_profesor) references profesores(run) on delete cascade on update cascade,
+	foreign key(run_alumno) references alumnos(run) on delete cascade on update cascade,
+	primary key(run_profesor, run_alumno)
+);
 
 -- Trigger para insertar usuarios
 	
