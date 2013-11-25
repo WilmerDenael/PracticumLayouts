@@ -214,6 +214,9 @@ public class AlumnoDAO{
 			   alumno.setDireccion(rs.getString(9));
 			   alumno.setNacionalidad(rs.getString(10));
 			   alumno.setFechaNacimiento(rs.getDate(11));
+			   alumno.setLegit(user.isLegit());
+			   alumno.setValid(user.isValid());
+			   alumno.setType(user.getType());
 		   } 
 	   }catch (Exception ex){
 		   System.out.println("Log In failed: An Exception has occurred! " + ex);

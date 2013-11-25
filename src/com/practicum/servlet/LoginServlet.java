@@ -42,7 +42,6 @@ try
     			  System.out.println("Usuario esta correcto, realizando la carga de datos");
     			  AlumnoBean alumnoUser= new AlumnoBean();
     			  alumnoUser = AlumnoDAO.selectAlumno(user);    			  
-    			  alumnoUser.parseUserBean(user);
     			  HttpSession session = request.getSession(true);
     			  System.out.println("tipo: "+alumnoUser.getType());
     	          session.setAttribute("currentSessionUser",alumnoUser);
@@ -58,7 +57,6 @@ try
    		 	if(user.isLegit()){
    		 		EmpresaBean empresaUser = new EmpresaBean();
    		 		empresaUser = EmpresaDAO.selectEmpresa(user);
-   		 		empresaUser.parseUserBean(user);
    		 		HttpSession session = request.getSession(true);
    		 		session.setAttribute("currentSessionUser",empresaUser);
    		 		System.out.println("tipo: "+empresaUser.getType());
