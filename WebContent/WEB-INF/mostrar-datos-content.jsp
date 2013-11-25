@@ -35,5 +35,7 @@
 	
 	<% } %>
 	
+	<a href="index.jsp" target="_self"> <input type="button" name="boton" value="volver" /> </a>
+	
 	</div>    		
 </div>
