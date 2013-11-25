@@ -50,7 +50,7 @@ public class ModificarCuentaServlet extends HttpServlet {
 				}else{
 					response.sendRedirect("errorModificacion.jsp");
 				}
-			}else{
+			}else if(currentUser.getType()==2){
 				if(!email.equals("")){
 					user.setEmail(email);
 					flagEmpresa[0]=UserDAO.genericStringUpdate("empresas", "email", user.getEmail(), "rut", user.getRut());

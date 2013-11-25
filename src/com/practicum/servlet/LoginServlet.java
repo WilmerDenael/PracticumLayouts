@@ -34,12 +34,17 @@ try
     	 if (prueba.getType()==1) {
     		 System.out.println("Usuario Valido de tipo alumno");
     		 user = new AlumnoBean();
+    		 System.out.println("Prueba tipe: "+prueba.getType());
     		 user.parseUserBean(prueba);
     		 user=AlumnoDAO.login(user);
     		 if(user.isLegit()){
+    			 System.out.println("User tipe: "+user.getType());
     			  System.out.println("Usuario esta correcto, realizando la carga de datos");
-    			  AlumnoBean alumnoUser = AlumnoDAO.selectAlumno(user);
+    			  AlumnoBean alumnoUser= new AlumnoBean();
+    			  alumnoUser = AlumnoDAO.selectAlumno(user);    			  
+    			  alumnoUser.parseUserBean(user);
     			  HttpSession session = request.getSession(true);
+    			  System.out.println("tipo: "+alumnoUser.getType());
     	          session.setAttribute("currentSessionUser",alumnoUser);
     	          response.sendRedirect("index.jsp"); //logged-in page      
     		 }else{
@@ -51,9 +56,12 @@ try
    		 	user.parseUserBean(prueba);
    		 	user=EmpresaDAO.login(user);
    		 	if(user.isLegit()){
-//   		 		EmpresaBean empresaUser = EmpresaDAO.selectEmpresa(user);
+   		 		EmpresaBean empresaUser = new EmpresaBean();
+   		 		empresaUser = EmpresaDAO.selectEmpresa(user);
+   		 		empresaUser.parseUserBean(user);
    		 		HttpSession session = request.getSession(true);
-//   		 		session.setAttribute("currentSessionUser",empresaUser);
+   		 		session.setAttribute("currentSessionUser",empresaUser);
+   		 		System.out.println("tipo: "+empresaUser.getType());
    		 		response.sendRedirect("index.jsp"); //logged-in page      
    		 	}else{
    		 		response.sendRedirect("invalidLogin.jsp"); //error page 
