@@ -213,6 +213,9 @@ public class EmpresaDAO {
 				   empresa.setAreaLaboral(rs.getString(7));
 				   empresa.setDireccion(rs.getString(8));
 				   empresa.setDescripcion(rs.getString(9));
+				   empresa.setLegit(user.isLegit());
+				   empresa.setValid(user.isValid());
+				   empresa.setType(user.getType());
 			   } 
 		   }catch (Exception ex){
 			   System.out.println("Log In failed: An Exception has occurred! " + ex);
