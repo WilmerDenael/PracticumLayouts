@@ -26,16 +26,14 @@ public class ModificarCuentaServlet extends HttpServlet {
 			System.out.println("RUT SESION: "+currentUser.getRut());
 			System.out.println("TIPO SESION: "+currentUser.getType());
 			
-			UserBean user = new UserBean();
-			user.parseUserBean(currentUser);
-			
 			String pass =request.getParameter("pass");
 			String email =request.getParameter("email");
 								
-			user.setRut(currentUser.getRut());	
 			
 			//VALIDACION DE CAMBIOS
 			if(currentUser.getType()==1){
+				AlumnoBean user = ((AlumnoBean) (session.getAttribute("currentSessionUser")));
+				user.setRut(currentUser.getRut());	
 				if(!email.equals("")){
 					user.setEmail(email);
 					flagAlumno[0]=UserDAO.genericStringUpdate("alumnos", "email", user.getEmail(), "run", user.getRut());
@@ -51,6 +49,7 @@ public class ModificarCuentaServlet extends HttpServlet {
 					response.sendRedirect("errorModificacion.jsp");
 				}
 			}else if(currentUser.getType()==2){
+				EmpresaBean user = ((EmpresaBean) (session.getAttribute("currentSessionUser")));
 				if(!email.equals("")){
 					user.setEmail(email);
 					flagEmpresa[0]=UserDAO.genericStringUpdate("empresas", "email", user.getEmail(), "rut", user.getRut());

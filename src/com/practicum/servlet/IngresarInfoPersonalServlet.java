@@ -25,15 +25,10 @@ public class IngresarInfoPersonalServlet extends HttpServlet {
 			Boolean[] flagAlumno = new Boolean[10];//tamaño depende de la cantidad de datos del formulario
 			
 			HttpSession session = request.getSession(true);
-			UserBean currentUser = ((UserBean) (session.getAttribute("currentSessionUser")));
+			AlumnoBean alumno = ((AlumnoBean) (session.getAttribute("currentSessionUser")));
 			
-			System.out.println("RUT SESION: "+currentUser.getRut());
-			System.out.println("TIPO SESION: "+currentUser.getType());
-			
-			UserBean userb = new UserBean();
-			AlumnoBean alumnob = new AlumnoBean();
-			
-			userb.parseUserBean(currentUser);
+			System.out.println("RUT SESION: "+alumno.getRut());
+			System.out.println("TIPO SESION: "+alumno.getType());
 			
 			//ACA CAPTURAR LOS DATOS DEL FORMULARIO
 			String primerNombre =request.getParameter("primerNombre");
@@ -46,58 +41,53 @@ public class IngresarInfoPersonalServlet extends HttpServlet {
 			String nacimiento =request.getParameter("nacimiento"); //FALTA GUARDAR ESTE DATO !
 			String referencia =request.getParameter("referencia");
 			String datosExtra =request.getParameter("datosExtra");
-			
-
-			
-			userb.setRut(currentUser.getRut());	
-			System.out.println(userb.getRut());
-			
+						
 			//VALIDACION DE CAMBIOS
 				if(!primerNombre.equals("")){
-					alumnob.setPrimerNombre(primerNombre);
-					flagAlumno[0]=UserDAO.genericStringUpdate("alumnos", "primer_Nombre", alumnob.getPrimerNombre(), "run", userb.getRut());
+					alumno.setPrimerNombre(primerNombre);
+					flagAlumno[0]=UserDAO.genericStringUpdate("alumnos", "primer_Nombre", alumno.getPrimerNombre(), "run", alumno.getRut());
 				}else flagAlumno[0]=false;
 				if(!segundoNombre.equals("")){
-					alumnob.setSegundoNombre(segundoNombre);
-					flagAlumno[1]=UserDAO.genericStringUpdate("alumnos", "segundo_Nombre", alumnob.getSegundoNombre(), "run", userb.getRut());
+					alumno.setSegundoNombre(segundoNombre);
+					flagAlumno[1]=UserDAO.genericStringUpdate("alumnos", "segundo_Nombre", alumno.getSegundoNombre(), "run", alumno.getRut());
 				}else flagAlumno[1]=false;
 				if(!paterno.equals("")){
-					alumnob.setApellidoPaterno(paterno);
-					flagAlumno[2]=UserDAO.genericStringUpdate("alumnos", "paterno", alumnob.getApellidoPaterno(), "run", userb.getRut());
+					alumno.setApellidoPaterno(paterno);
+					flagAlumno[2]=UserDAO.genericStringUpdate("alumnos", "paterno", alumno.getApellidoPaterno(), "run", alumno.getRut());
 				}else flagAlumno[2]=false;
 				if(!materno.equals("")){
-					alumnob.setApellidoMaterno(materno);
-					flagAlumno[3]=UserDAO.genericStringUpdate("alumnos", "materno", alumnob.getApellidoMaterno(), "run", userb.getRut());
+					alumno.setApellidoMaterno(materno);
+					flagAlumno[3]=UserDAO.genericStringUpdate("alumnos", "materno", alumno.getApellidoMaterno(), "run", alumno.getRut());
 				}else flagAlumno[3]=false;
 				if(!civil.equals("")){
-					alumnob.setEstadoCivil(civil);
-					flagAlumno[4]=UserDAO.genericStringUpdate("alumnos", "estado_civil", alumnob.getEstadoCivil(), "run", userb.getRut());
+					alumno.setEstadoCivil(civil);
+					flagAlumno[4]=UserDAO.genericStringUpdate("alumnos", "estado_civil", alumno.getEstadoCivil(), "run", alumno.getRut());
 				}else flagAlumno[4]=false;
 				if(!direccion.equals("")){
-					alumnob.setDireccion(direccion);
-					flagAlumno[5]=UserDAO.genericStringUpdate("alumnos", "direccion", alumnob.getDireccion(), "run", userb.getRut());
+					alumno.setDireccion(direccion);
+					flagAlumno[5]=UserDAO.genericStringUpdate("alumnos", "direccion", alumno.getDireccion(), "run", alumno.getRut());
 				}else flagAlumno[5]=false;
 				if(!nacionalidad.equals("")){
-					alumnob.setNacionalidad(nacionalidad);
-					flagAlumno[6]=UserDAO.genericStringUpdate("alumnos", "nacionalidad", alumnob.getNacionalidad(), "run", userb.getRut());
+					alumno.setNacionalidad(nacionalidad);
+					flagAlumno[6]=UserDAO.genericStringUpdate("alumnos", "nacionalidad", alumno.getNacionalidad(), "run", alumno.getRut());
 				}else flagAlumno[6]=false;
 				if(!referencia.equals("")){
-					alumnob.setReferencia(referencia);
-					flagAlumno[7]=UserDAO.genericStringUpdate("alumnos", "referencia", alumnob.getReferencia(), "run", userb.getRut());
+					alumno.setReferencia(referencia);
+					flagAlumno[7]=UserDAO.genericStringUpdate("alumnos", "referencia", alumno.getReferencia(), "run", alumno.getRut());
 				}else flagAlumno[7]=false;
 				if(!datosExtra.equals("")){
-					alumnob.setDatosExtra(datosExtra);
-					flagAlumno[8]=UserDAO.genericStringUpdate("alumnos", "datos_adicionales", alumnob.getDatosExtra(), "run", userb.getRut());
+					alumno.setDatosExtra(datosExtra);
+					flagAlumno[8]=UserDAO.genericStringUpdate("alumnos", "datos_adicionales", alumno.getDatosExtra(), "run", alumno.getRut());
 				}else flagAlumno[8]=false;
 				/*if(!nacimiento.equals("")){
-					alumnob.setFechaNacimiento(nacimiento);
-					flagAlumno[9]=UserDAO.genericDateUpdate("alumnos", "nacimiento", alumnob.getFechaNacimiento(), "run", userb.getRut());
+					alumno.setFechaNacimiento(nacimiento);
+					flagAlumno[9]=UserDAO.genericDateUpdate("alumnos", "nacimiento", alumno.getFechaNacimiento(), "run", alumno.getRut());
 				}else flagAlumno[9]=false;*/
 				
 				
 				if((flagAlumno[0]||flagAlumno[1]||flagAlumno[2]||flagAlumno[3]||flagAlumno[4]||
 						flagAlumno[5]||flagAlumno[6]||flagAlumno[7]||flagAlumno[8])==true){
-					session.setAttribute("currentSessionUser",userb); 
+					session.setAttribute("currentSessionUser",alumno); 
 					response.sendRedirect("modificacionExitoso.jsp");
 				}else{
 					response.sendRedirect("errorModificacion.jsp");
