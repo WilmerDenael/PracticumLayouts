@@ -7,31 +7,74 @@
 	<% if (currentUser.getType() == 1) {%>
 		<h2>Datos de alumno:</h2>
 		<%  AlumnoBean currentAlumno = ((AlumnoBean) (session.getAttribute("currentSessionUser")));%>
-		<p>Nombre completo: <%= currentAlumno.getPrimerNombre()%> <%= currentAlumno.getSegundoNombre()%> 
-					<%= currentAlumno.getApellidoPaterno()%> <%= currentAlumno.getApellidoMaterno()%></br>
+		<p>Nombre Completo:
+		<% if(currentAlumno.getPrimerNombre()!=null && !currentAlumno.getPrimerNombre().isEmpty() ){%>
+			<%=currentAlumno.getPrimerNombre()%>
+		<%}%>
+		<% if(currentAlumno.getSegundoNombre()!=null && !currentAlumno.getSegundoNombre().isEmpty() ){%>
+			<%=currentAlumno.getSegundoNombre()%>
+		<%}%>
+		<% if(currentAlumno.getApellidoPaterno()!=null && !currentAlumno.getApellidoPaterno().isEmpty() ){%>
+			<%=currentAlumno.getApellidoPaterno()%>
+		<%}%>
+		<% if(currentAlumno.getApellidoMaterno()!=null && !currentAlumno.getApellidoMaterno().isEmpty() ){%>
+			<%=currentAlumno.getApellidoMaterno()%>
+		<%}%></br>
 		Run: <%= currentAlumno.getRut()%></br>
 		Correo electronico: <%= currentAlumno.getEmail()%></br>
 		Contraseña: <%= currentAlumno.getPassword()%></br>
-		Estado civil: <%= currentAlumno.getEstadoCivil()%></br>
-		Dirección: <%= currentAlumno.getDireccion()%></br>
-		Nacionalidad: <%= currentAlumno.getNacionalidad()%></br>
-		Referencias: <%= currentAlumno.getReferencia()%></br>
-		Datos extras: <%= currentAlumno.getDatosExtra()%></br>
+		Estado civil: 
+		<% if(currentAlumno.getEstadoCivil()!=null && !currentAlumno.getEstadoCivil().isEmpty() ){%>
+			<%=currentAlumno.getEstadoCivil()%>
+		<%}%></br>
+		Dirección: 
+		<% if(currentAlumno.getDireccion()!=null && !currentAlumno.getDireccion().isEmpty() ){%>
+			<%=currentAlumno.getDireccion()%>
+		<%}%></br>
+		Nacionalidad: 
+		<% if(currentAlumno.getNacionalidad()!=null && !currentAlumno.getNacionalidad().isEmpty() ){%>
+			<%=currentAlumno.getNacionalidad()%>
+		<%}%></br>
+		Referencias: 
+		<% if(currentAlumno.getReferencia()!=null && !currentAlumno.getReferencia().isEmpty() ){%>
+			<%=currentAlumno.getReferencia()%>
+		<%}%></br>
+		Datos extras: 
+		<% if(currentAlumno.getDatosExtra()!=null && !currentAlumno.getDatosExtra().isEmpty() ){%>
+			<%=currentAlumno.getDatosExtra()%>
+		<%}%></br>
 		</p>
 		
 	<% }else if (currentUser.getType() == 2) { %>
 		<h2>Datos de empresa:</h2>
 		<%  EmpresaBean currentEmpresa = ((EmpresaBean) (session.getAttribute("currentSessionUser")));%>
-		<p>Nombre: <%= currentEmpresa.getNombre()%></br>
+		<p>Nombre: 
+		<% if(currentEmpresa.getNombre()!=null && !currentEmpresa.getNombre().isEmpty() ){%>
+			<%=currentEmpresa.getNombre()%>
+		<%}%>
 		Rut: <%= currentEmpresa.getRut()%></br>
 		Correo electronico: <%= currentEmpresa.getEmail()%></br>
 		Contraseña: <%= currentEmpresa.getPassword()%></br>
-		N° de trabajadores: <%= currentEmpresa.getNumeroTrabajadores()%></br>
-		Dirección: <%= currentEmpresa.getDireccion()%></br>
-		Nacionalidad: <%= currentEmpresa.getNacionalidad()%></br>
-		Area laboral: <%= currentEmpresa.getAreaLaboral()%></br>
-		Descripción: <%= currentEmpresa.getDescripcion()%></br>
-		<!-- POSIBLEMENTE DESPUES AGREGAR REFERENCIAS Y DATOS EXTRAS -->
+		N° de trabajadores: 
+		<% if(currentEmpresa.getNumeroTrabajadores()!=0 ){%>
+			<%=currentEmpresa.getNumeroTrabajadores()%>
+		<%}%></br>
+		Dirección: 
+		<% if(currentEmpresa.getDireccion()!=null && !currentEmpresa.getDireccion().isEmpty() ){%>
+			<%=currentEmpresa.getDireccion()%>
+		<%}%></br>
+		Nacionalidad: 
+		<% if(currentEmpresa.getNacionalidad()!=null && !currentEmpresa.getNacionalidad().isEmpty() ){%>
+			<%=currentEmpresa.getNacionalidad()%>
+		<%}%></br>
+		Area laboral: 
+		<% if(currentEmpresa.getAreaLaboral()!=null && !currentEmpresa.getAreaLaboral().isEmpty() ){%>
+			<%=currentEmpresa.getAreaLaboral()%>
+		<%}%></br>
+		Descripción: 
+		<% if(currentEmpresa.getDescripcion()!=null && !currentEmpresa.getDescripcion().isEmpty() ){%>
+			<%=currentEmpresa.getDescripcion()%>
+		<%}%></br>
 		</p>
 	
 	<% } %>
