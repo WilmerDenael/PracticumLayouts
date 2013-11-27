@@ -7,12 +7,19 @@
 
 <div id="backContenido">
  	<div id="contenido">
-		<h2>Inicio usuario rut: <%= Integer.toString(currentUser.getRut()) %></h2>
-		<a href="mostrarDatosActuales.jsp">Mostrar datos actuales</a></br>
-		<a href="modificarCuenta.jsp">Modificar datos de cuenta</a></br>
-		<a href="ingresarInfoPersonal.jsp">Ingresar información personal</a></br>
-		<a href="ingresarCurriculum.jsp">Ingresar curriculum</a></br>
-		<a href="#"></a>
-		<a href="logout.jsp">Salir</a></br>
+		<% if (currentUser.getType() == 1) {%>
+			<h2>Inicio alumno run: <%= Integer.toString(currentUser.getRut()) %></h2>
+			<a href="mostrarDatosActuales.jsp">Mostrar datos actuales</a></br>
+			<a href="modificarCuenta.jsp">Modificar datos de cuenta</a></br>
+			<a href="ingresarInfoPersonal.jsp">Ingresar información personal</a></br>
+			<a href="ingresarCurriculum.jsp">Ingresar curriculum</a></br>
+		<% }else if (currentUser.getType() == 2) { %>
+			<h2>Inicio empresa rut: <%= Integer.toString(currentUser.getRut()) %></h2>
+			<a href="mostrarDatosActuales.jsp">Mostrar datos actuales</a></br>
+			<a href="modificarCuenta.jsp">Modificar datos de cuenta</a></br>
+			<a href="ingresarInfoPersonal.jsp">Ingresar información de empresa</a></br>
+		<% } %>
+		
+		
     </div>
 </div>
