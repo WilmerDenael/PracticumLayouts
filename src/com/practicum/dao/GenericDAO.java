@@ -1,10 +1,9 @@
 package com.practicum.dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.ArrayList;
-import com.practicum.util.AreaInteres;
+import java.sql.*;
+import java.util.*;
+
+import com.practicum.util.*;
 
 public class GenericDAO {
 	
@@ -40,4 +39,24 @@ public class GenericDAO {
 		return intereses;
 	}
 	
+	 public static List<Idioma> cargarIdiomas(){
+		  List<Idioma> idiomas = new ArrayList<Idioma>();
+		  Statement stmt = null;
+		  String query = "Select idioma from idiomas";
+		  try{
+			  currentCon = ConnectionManager.getConnection();
+			  stmt = currentCon.createStatement();
+			   rs = stmt.executeQuery(query);
+			   Idioma idioma;
+			   while(rs.next()){
+				   idioma = new Idioma();
+				   idioma.setIdioma(rs.getString(1));
+				   idiomas.add(idioma);
+			   } 
+			 System.out.println("Se cargaron: "+idiomas.size()+" idioma(s)"); 
+		  }catch(Exception ex){
+			System.out.println("Log In failed: An Exception has occurred! " + ex); 
+		  }
+		  return idiomas;
+	  }
 }
