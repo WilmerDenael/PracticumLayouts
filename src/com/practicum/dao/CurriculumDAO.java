@@ -184,9 +184,10 @@ public class CurriculumDAO {
 			   System.out.println("Carga de Idiomas exitosa");
 			   
 			   //Carga Intereses
-			   query = "SELECT cai.id, cai.run, cai.id_curriculum, sai.sub_area " +
-					   "FROM  curriculums_areas_interes cai, sub_areas_interes sai " +
-					   "WHERE cai.run = ? AND cai.id_curriculum = ? AND cai.id = sai.id";
+			   query = "SELECT ai.id, c.run, c.id, ai.area, ai.desarrollo, ai.base_de_datos, ai.redes " +
+					   "FROM  areas_interes ai, curriculums c, curriculums_areas_interes cai " +
+					   "WHERE c.run = ? AND c.id = ? AND cai.id = ai.id " + 
+					   "AND c.id = cai.id_curriculum AND c.run = cai.run";
 			   System.out.println("Query: " + query);
 			   stmt = currentCon.prepareStatement(query);
 			   stmt.setInt(1,run);
@@ -199,6 +200,9 @@ public class CurriculumDAO {
 				   interes.setRun(rs.getInt(2));
 				   interes.setIdCurriculum(rs.getInt(3));
 				   interes.setArea(rs.getString(4));
+				   interes.setDesarrollo(rs.getInt(5));
+				   interes.setBaseDeDatos(rs.getInt(6));
+				   interes.setRedes(rs.getInt(7));
 				   intereses.add(interes);
 			   }
 			   curriculum.setIntereses(intereses);
