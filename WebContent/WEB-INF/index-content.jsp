@@ -13,6 +13,7 @@
 			<a href="modificarCuenta.jsp">Modificar datos de cuenta</a></br>
 			<a href="ingresarInfoPersonal.jsp">Ingresar información personal</a></br>
 			<a href="ingresarCurriculum.jsp">Ingresar curriculum</a></br>
+			<a href="testListas.jsp">TEST LISTAS</a></br>
 		<% }else if (currentUser.getType() == 2) { %>
 			<h2>Inicio empresa rut: <%= Integer.toString(currentUser.getRut()) %></h2>
 			<a href="mostrarDatosActuales.jsp">Mostrar datos actuales</a></br>
