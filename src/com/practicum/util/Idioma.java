@@ -2,12 +2,18 @@ package com.practicum.util;
 
 public class Idioma {
 
+	private String id;
 	private String idioma;
 	private int run;
 	private int idCurriculum;
 	private String nivel;
 	
-	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public String getIdioma() {
 		return idioma;
 	}

@@ -42,7 +42,7 @@ public class GenericDAO {
 	 public static List<Idioma> cargarIdiomas(){
 		  List<Idioma> idiomas = new ArrayList<Idioma>();
 		  Statement stmt = null;
-		  String query = "Select idioma from idiomas";
+		  String query = "Select id,idioma from idiomas";
 		  try{
 			  currentCon = ConnectionManager.getConnection();
 			  stmt = currentCon.createStatement();
@@ -50,7 +50,8 @@ public class GenericDAO {
 			   Idioma idioma;
 			   while(rs.next()){
 				   idioma = new Idioma();
-				   idioma.setIdioma(rs.getString(1));
+				   idioma.setId(rs.getString(1));
+				   idioma.setIdioma(rs.getString(2));
 				   idiomas.add(idioma);
 			   } 
 			 System.out.println("Se cargaron: "+idiomas.size()+" idioma(s)"); 
