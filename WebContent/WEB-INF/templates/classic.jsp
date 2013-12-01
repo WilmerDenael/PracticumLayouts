@@ -7,7 +7,23 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link href="${requestScope.css}" type="text/css" rel="stylesheet" />
+<link href="${requestScope.css1}" type="text/css" rel="stylesheet" />
+<link href="${requestScope.css2}" type="text/css" rel="stylesheet" />
+<script src="${requestScope.js1}" type="text/javascript"></script>
+<script src="${requestScope.js2}" type="text/javascript"></script>
+
+<script>
+
+$(document).ready(function() {
+    $('#idiomas').multiSelect()
+  });
+  
+$(document).ready(function() {
+    $('#areas').multiSelect()
+  });
+  
+</script>
+
 <title> ${requestScope.title} </title>
 </head>
 <body>
