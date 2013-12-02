@@ -167,6 +167,22 @@ create table recomendaciones(
 	primary key(run_profesor, run_alumno)
 );
 
+create table asignaturas(
+	id int auto_increment,
+	asignatura varchar(50),
+	descripcion text,
+	primary key(id)
+);
+
+create table notas_alumnos(
+	run int,
+	id_asignatura int,
+	nota int,
+	foreign key(run) references alumnos(run) on delete cascade on update cascade,
+	foreign key(id_asignatura) references asignaturas(id) on delete cascade on update cascade,
+	primary key(run,id_asignatura)
+);
+
 -- Trigger para insertar usuarios
 	
 delimiter ??
