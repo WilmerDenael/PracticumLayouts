@@ -17,4 +17,5 @@
 		</form></br>
 		<a href="eliminarCuenta.jsp">Desea eliminar su cuenta?</a></br></br>
 		<a href="index.jsp" target="_self"> <input type="button" name="boton" value="volver" /> </a>
+	</div>
 </div>
