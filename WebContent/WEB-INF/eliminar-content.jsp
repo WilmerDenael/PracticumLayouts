@@ -5,11 +5,14 @@
 
 <div id="backContenido">
  	<div id="contenido">
-		<h2>Esta seguro en eliminar su cuenta?</h2>
-		<form action="/Practicum/eliminarCuenta">
-			<input type="submit" value="Eliminar cuenta">
-		</form>
-		</br>
-		<a href="index.jsp" target="_self"> <input type="button" name="boton" value="volver" /> </a>
+ 		<div style="text-align:center;">
+			<h2>¿Esta seguro en eliminar su cuenta?</h2>
+			<p>Debe tener en cuenta que sus datos personales y su curriculum seran borrados de nuestro sistema.</p>
+			<form action="/Practicum/eliminarCuenta">
+				<input type="submit" value="Si, deseo eliminar mi cuenta">
+			</form>
+			</br></br>
+			<a href="index.jsp" target="_self"> <input type="button" name="boton" value="Volver" /> </a>
+		</div>
   	</div>
 </div>

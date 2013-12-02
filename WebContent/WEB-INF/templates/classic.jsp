@@ -38,7 +38,7 @@ $(document).ready(function() {
         
     	<jsp:include page="${requestScope.body}" />
     	
-        <!--<jsp:include page="${requestScope.footer}" />-->
+        <jsp:include page="${requestScope.footer}" />
     </div>
 		
 </body>

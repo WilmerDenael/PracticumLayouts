@@ -6,12 +6,14 @@
 <% UserBean currentUser = ((UserBean) (session.getAttribute("currentSessionUser")));%>
 
 <header>
-	<div id="logo">
-		<img src="resources/css/img/u12_normal.png" />
-			<div style="float:right; margin:25px auto 0px auto;">
-			<img src="resources/css/img/u10_normal.png" />
-		</div>
-    </div>
+    <div id="logo1">
+		<img src="resources/css/img/menu_marca.png" >
+	</div>
+	<div id="logo2">
+		<img src="resources/css/img/header.png" >
+	</div>
+    
+    
     <div id="menuUser">
     	<ul>
     		<li>Bienvenido <%= Integer.toString(currentUser.getRut()) %>,</li>
