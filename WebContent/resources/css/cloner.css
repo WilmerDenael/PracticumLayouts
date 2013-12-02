@@ -1,0 +1,182 @@
+
+/* =Container
+---------------------------------------------------------------------------------------------------- */
+
+#container
+{
+	margin: 0 auto;
+	width: 500px;
+}
+
+/* =Cloning Functionality
+---------------------------------------------------------------------------------------------------- */
+
+.deleteMe
+{
+	display: none;
+}
+
+.duplicate .deleteMe
+{
+	display: inline;
+}
+
+.duplicate .cloneMe
+{
+	display: none;
+}
+
+fieldset
+{
+	background: #ffc;
+	border: 1px solid #999;
+	position: relative;
+}
+
+fieldset.duplicate,
+fieldset.duplicate span.tab
+{
+	background: #eef;
+}
+
+span.tab
+{
+	background: #ffc;
+	border-color: #999;
+	border-style: solid;
+	border-width: 1px 1px 1px 0;
+	display: block;
+	padding: 5px 0 7px;
+	position: absolute;
+	top: -1px;
+	right: -26px;
+	text-align: center;
+	width: 25px;
+}
+
+span.tab a.cloneMe
+{
+	background: #fff;
+	border: 1px solid #3c3;
+	color: #090;
+	padding: 0 3px 2px;
+	text-decoration: none;
+}
+
+span.tab a.cloneMe:hover
+{
+	background: #cfc;
+	color: #000;
+}
+
+span.tab a.deleteMe
+{
+	background: #fff;
+	border: 1px solid #f66;
+	color: #f00;
+	padding: 0 4px 2px;
+	text-decoration: none;
+}
+
+span.tab a.deleteMe:hover
+{
+	background: #fdd;
+	color: #000;
+}
+
+/* =Form Elements
+---------------------------------------------------------------------------------------------------- */
+
+table
+{
+	margin: 0 auto;
+}
+
+td
+{
+	vertical-align: top;
+}
+
+input,
+select,
+textarea
+{
+	color: #333;
+	font: 11px Verdana, sans-serif;
+	margin: 0 10px 0 0;
+}
+
+input,
+textarea
+{
+	padding: 2px 3px;
+}
+
+input
+{
+	width: 130px;
+}
+
+select
+{
+	padding: 2px 3px 2px 0;
+	width: 140px;
+}
+
+select.month
+{
+	width: 56px;
+}
+
+select.year
+{
+	width: 70px;
+}
+
+option
+{
+	padding: 0 0 0 3px;
+}
+
+textarea
+{
+	overflow: auto;
+	width: 364px;
+	height: 80px;
+}
+
+input.button
+{
+	cursor: pointer;
+	font-weight: bold;
+	margin: 0;
+	overflow: visible;
+	padding: 2px;
+	width: auto;
+}
+
+input.radio
+{
+	margin: 0;
+	padding: 0;
+	vertical-align: top;
+	width: 12px;
+	height: 16px;
+}
+
+input.checkbox
+{
+	margin: 0;
+	padding: 0;
+	vertical-align: top;
+	width: 13px;
+	height: 16px;
+}
+
+label
+{
+	display: block;
+	font-weight: bold;
+	padding: 3px 0 0;
+	text-align: right;
+}

@@ -8,8 +8,12 @@
 <%
 request.setAttribute("css1", "resources/css/mainStyle.css");
 request.setAttribute("css2", "resources/css/multi-select.css");
-request.setAttribute("js2", "resources/js/jquery.multi-select.js");
+request.setAttribute("css3", "resources/css/cloner.css");
+request.setAttribute("css4", "resources/css/chosen.css");
 request.setAttribute("js1", "resources/js/jquery-2.0.3.js");
+request.setAttribute("js2", "resources/js/jquery.multi-select.js");
+request.setAttribute("js3", "resources/js/cloneFieldset.js");
+request.setAttribute("js4", "resources/js/chosen.jquery.js");
 %>
 
 <%-- Include abstract layout --%> 
