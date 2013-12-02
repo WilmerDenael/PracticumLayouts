@@ -7,7 +7,7 @@
 	<% if (currentUser.getType() == 1) {%>
 		<h2>Datos de alumno:</h2>
 		<%  AlumnoBean currentAlumno = ((AlumnoBean) (session.getAttribute("currentSessionUser")));%>
-		<p>Nombre Completo:
+		<label>Nombre Completo:</label>
 		<% if(currentAlumno.getPrimerNombre()!=null && !currentAlumno.getPrimerNombre().isEmpty() ){%>
 			<%=currentAlumno.getPrimerNombre()%>
 		<%}%>
@@ -20,66 +20,70 @@
 		<% if(currentAlumno.getApellidoMaterno()!=null && !currentAlumno.getApellidoMaterno().isEmpty() ){%>
 			<%=currentAlumno.getApellidoMaterno()%>
 		<%}%></br>
-		Run: <%= currentAlumno.getRut()%></br>
-		Correo electronico: <%= currentAlumno.getEmail()%></br>
-		Contraseña: <%= currentAlumno.getPassword()%></br>
-		Estado civil: 
+		<label>Run:</label> <%= currentAlumno.getRut()%></br>
+		<label>Correo electronico:</label> <%= currentAlumno.getEmail()%></br>
+		<label>Contraseña:</label> <%= currentAlumno.getPassword()%></br>
+		<label>Estado civil:</label>
 		<% if(currentAlumno.getEstadoCivil()!=null && !currentAlumno.getEstadoCivil().isEmpty() ){%>
 			<%=currentAlumno.getEstadoCivil()%>
 		<%}%></br>
-		Dirección: 
+		<label>Dirección:</label> 
 		<% if(currentAlumno.getDireccion()!=null && !currentAlumno.getDireccion().isEmpty() ){%>
 			<%=currentAlumno.getDireccion()%>
 		<%}%></br>
-		Nacionalidad: 
+		<label>Fecha de nacimiento:</label> 
+		<% if(currentAlumno.getFechaNacimiento()!=null && !currentAlumno.getFechaNacimiento().isEmpty() ){%>
+			<%=currentAlumno.getFechaNacimiento()%>
+		<%}%></br>
+		<label>Nacionalidad:</label> 
 		<% if(currentAlumno.getNacionalidad()!=null && !currentAlumno.getNacionalidad().isEmpty() ){%>
 			<%=currentAlumno.getNacionalidad()%>
 		<%}%></br>
-		Referencias: 
+		<label>Referencias:</label>
 		<% if(currentAlumno.getReferencia()!=null && !currentAlumno.getReferencia().isEmpty() ){%>
 			<%=currentAlumno.getReferencia()%>
 		<%}%></br>
-		Datos extras: 
+		<label>Datos extras:</label> 
 		<% if(currentAlumno.getDatosExtra()!=null && !currentAlumno.getDatosExtra().isEmpty() ){%>
 			<%=currentAlumno.getDatosExtra()%>
-		<%}%></br>
-		</p>
+		<%}%></br></br>
+		
 		
 	<% }else if (currentUser.getType() == 2) { %>
 		<h2>Datos de empresa:</h2>
 		<%  EmpresaBean currentEmpresa = ((EmpresaBean) (session.getAttribute("currentSessionUser")));%>
-		<p>Nombre: 
+		<label>Nombre:</label> 
 		<% if(currentEmpresa.getNombre()!=null && !currentEmpresa.getNombre().isEmpty() ){%>
 			<%=currentEmpresa.getNombre()%>
-		<%}%>
-		Rut: <%= currentEmpresa.getRut()%></br>
-		Correo electronico: <%= currentEmpresa.getEmail()%></br>
-		Contraseña: <%= currentEmpresa.getPassword()%></br>
-		N° de trabajadores: 
+		<%}%></br>
+		<label>Rut:</label> <%= currentEmpresa.getRut()%></br>
+		<label>Correo electronico:</label> <%= currentEmpresa.getEmail()%></br>
+		<label>Contraseña:</label> <%= currentEmpresa.getPassword()%></br>
+		<label>N° de trabajadores:</label>
 		<% if(currentEmpresa.getNumeroTrabajadores()!=0 ){%>
 			<%=currentEmpresa.getNumeroTrabajadores()%>
 		<%}%></br>
-		Dirección: 
+		<label>Dirección:</label>
 		<% if(currentEmpresa.getDireccion()!=null && !currentEmpresa.getDireccion().isEmpty() ){%>
 			<%=currentEmpresa.getDireccion()%>
 		<%}%></br>
-		Nacionalidad: 
+		<label>Nacionalidad:</label> 
 		<% if(currentEmpresa.getNacionalidad()!=null && !currentEmpresa.getNacionalidad().isEmpty() ){%>
 			<%=currentEmpresa.getNacionalidad()%>
 		<%}%></br>
-		Area laboral: 
+		<label>Area laboral:</label> 
 		<% if(currentEmpresa.getAreaLaboral()!=null && !currentEmpresa.getAreaLaboral().isEmpty() ){%>
 			<%=currentEmpresa.getAreaLaboral()%>
 		<%}%></br>
-		Descripción: 
+		<label>Descripción:</label> 
 		<% if(currentEmpresa.getDescripcion()!=null && !currentEmpresa.getDescripcion().isEmpty() ){%>
 			<%=currentEmpresa.getDescripcion()%>
 		<%}%></br>
-		</p>
+		
 	
 	<% } %>
 	
-	<a href="index.jsp" target="_self"> <input type="button" name="boton" value="volver" /> </a>
+	<a href="index.jsp" target="_self"> <input type="button" name="boton" value="Volver" /> </a>
 	
 	</div>    		
 </div>
