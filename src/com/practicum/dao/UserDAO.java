@@ -1,6 +1,7 @@
 package com.practicum.dao;
 
 import java.sql.*;
+import java.util.Date;
 
 import com.practicum.dao.ConnectionManager;
 import com.practicum.util.UserBean;
@@ -149,5 +150,22 @@ return bean;
 	         return false;
 	      }
    }
+	public static boolean genericDateUpdate(String tableName, String parameter, String fechaNacimiento, String whereIdentifier, int whereValue) {
+		PreparedStatement ps;
+		String query ="UPDATE "+tableName+" SET "+parameter+"=? WHERE "+whereIdentifier+"=?";
+		try{
+			currentCon = ConnectionManager.getConnection();
+			ps = currentCon.prepareStatement(query);
+			ps.setString(1, fechaNacimiento);
+			ps.setInt(2, whereValue);
+			ps.executeUpdate();
+			System.out.println("Modificado exitosamente");
+		}catch(Exception ex) {
+	         System.out.println("Log In failed: An Exception has occurred! " + ex);
+	         return false;
+	    }
+		
+		return true;
+	}
    
 }

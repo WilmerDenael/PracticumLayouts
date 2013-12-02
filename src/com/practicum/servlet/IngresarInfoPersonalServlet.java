@@ -41,7 +41,8 @@ public class IngresarInfoPersonalServlet extends HttpServlet {
 			String nacimiento =request.getParameter("nacimiento"); //FALTA GUARDAR ESTE DATO !
 			String referencia =request.getParameter("referencia");
 			String datosExtra =request.getParameter("datosExtra");
-						
+			System.out.println(nacimiento);
+			
 			//VALIDACION DE CAMBIOS
 				if(!primerNombre.equals("")){
 					alumno.setPrimerNombre(primerNombre);
@@ -79,14 +80,15 @@ public class IngresarInfoPersonalServlet extends HttpServlet {
 					alumno.setDatosExtra(datosExtra);
 					flagAlumno[8]=UserDAO.genericStringUpdate("alumnos", "datos_adicionales", alumno.getDatosExtra(), "run", alumno.getRut());
 				}else flagAlumno[8]=false;
-				/*if(!nacimiento.equals("")){
+				if(!nacimiento.equals("")){
 					alumno.setFechaNacimiento(nacimiento);
-					flagAlumno[9]=UserDAO.genericDateUpdate("alumnos", "nacimiento", alumno.getFechaNacimiento(), "run", alumno.getRut());
-				}else flagAlumno[9]=false;*/
+					flagAlumno[9]=UserDAO.genericDateUpdate("alumnos", "nacimiento", nacimiento, "run", alumno.getRut());
+					System.out.println("Flag nacimiento: "+flagAlumno[9]);
+				}else flagAlumno[9]=false;
 				
 				
 				if((flagAlumno[0]||flagAlumno[1]||flagAlumno[2]||flagAlumno[3]||flagAlumno[4]||
-						flagAlumno[5]||flagAlumno[6]||flagAlumno[7]||flagAlumno[8])==true){
+						flagAlumno[5]||flagAlumno[6]||flagAlumno[7]||flagAlumno[8] || flagAlumno[9])==true){
 					session.setAttribute("currentSessionUser",alumno); 
 					response.sendRedirect("modificacionExitoso.jsp");
 				}else{

@@ -27,6 +27,12 @@ public class IngresarCurriculumServlet extends HttpServlet {
 			System.out.println("RUT SESION: "+alumno.getRut());
 			System.out.println("TIPO SESION: "+alumno.getType());
 			
+			Curriculum curriculum = new Curriculum();
+			List<AreaInteres> areas = new ArrayList<AreaInteres>();
+			List<Idioma> idiomas = new ArrayList<Idioma>();
+			List<DatoAcademico> datosAcademicos= new ArrayList<DatoAcademico>();
+			List<HistorialLaboral> laborales = new ArrayList<HistorialLaboral>();
+			
 			//ACA CAPTURAR LOS DATOS DEL FORMULARIO
 			
 //			String primerNombre =request.getParameter("establecimiento");
@@ -40,13 +46,7 @@ public class IngresarCurriculumServlet extends HttpServlet {
 //			String referencia =request.getParameter("referencia");
 //			String datosExtra =request.getParameter("datosExtra");
 			
-			//PASO DE DATOS
-			
-			Curriculum curriculum = new Curriculum();
-			List<AreaInteres> areas = new ArrayList<AreaInteres>();
-			List<Idioma> idiomas = new ArrayList<Idioma>();
-			List<DatoAcademico> datosAcademicos= new ArrayList<DatoAcademico>();
-			List<HistorialLaboral> laborales = new ArrayList<HistorialLaboral>();
+			//PASO DE DATOS DE FORMULARIO A LAS LISTAS
 			
 			// SE ASOCIAN LOS DATOS AL CURRICULUM
 			curriculum.setId(1);
