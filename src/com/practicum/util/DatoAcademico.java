@@ -8,8 +8,8 @@ public class DatoAcademico {
 	private int run;
 	private int idCurriculum;
 	private String establecimiento;
-	private Date inicio;
-	private Date fin;
+	private String inicio;
+	private String fin;
 	private String descripcion;
 	
 	
@@ -39,16 +39,16 @@ public class DatoAcademico {
 		this.establecimiento = establecimiento;
 	
 	}
-	public Date getInicio() {
+	public String getInicio() {
 		return inicio;
 	}
-	public void setInicio(Date inicio) {
+	public void setInicio(String inicio) {
 		this.inicio = inicio;
 	}
-	public Date getFin() {
+	public String getFin() {
 		return fin;
 	}
-	public void setFin(Date fin) {
+	public void setFin(String fin) {
 		this.fin = fin;
 	}
 	public String getDescripcion() {

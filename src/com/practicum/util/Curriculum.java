@@ -8,7 +8,7 @@ public class Curriculum {
 	private int id;
 	private int run;
 	private boolean active;
-	private Date ultimaActualizacion;
+	private String ultimaActualizacion;
 	private boolean confidencial;
 	private List<DatoAcademico> datosAcademicos;
 	private List<HistorialLaboral> laborales;
@@ -35,10 +35,10 @@ public class Curriculum {
 	public void setActive(boolean active) {
 		this.active = active;
 	}
-	public Date getUltimaActualizacion() {
+	public String getUltimaActualizacion() {
 		return ultimaActualizacion;
 	}
-	public void setUltimaActualizacion(Date ultimaActualizacion) { 
+	public void setUltimaActualizacion(String ultimaActualizacion) {
 		this.ultimaActualizacion = ultimaActualizacion;
 	}
 	public boolean isConfidencial() {

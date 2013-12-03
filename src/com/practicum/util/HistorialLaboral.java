@@ -9,8 +9,8 @@ public class HistorialLaboral {
 	private int idCurriculum;
 	private String establecimiento;
 	private String cargo;
-	private Date inicio;
-	private Date fin;
+	private String inicio;
+	private String fin;
 	private String descripcion;
 	
 	
@@ -44,20 +44,20 @@ public class HistorialLaboral {
 	public void setCargo(String cargo) {
 		this.cargo = cargo;
 	}
-	public Date getInicio() {
-		return inicio;
-	}
-	public void setInicio(Date inicio) {
-		this.inicio = inicio;
-	}
-	public Date getFin() {
-		return fin;
-	}
-	public void setFin(Date fin) {
-		this.fin = fin;
-	}
 	public String getDescripcion() {
 		return descripcion;
+	}
+	public String getInicio() {
+		return inicio;
+	}
+	public void setInicio(String inicio) {
+		this.inicio = inicio;
+	}
+	public String getFin() {
+		return fin;
+	}
+	public void setFin(String fin) {
+		this.fin = fin;
 	}
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;

@@ -112,7 +112,7 @@ public class CurriculumDAO {
 				   curriculum.setId(rs.getInt(1));
 				   curriculum.setRun(rs.getInt(2));
 				   curriculum.setActive(rs.getBoolean(3));
-				   curriculum.setUltimaActualizacion(rs.getDate(4));
+				   curriculum.setUltimaActualizacion(rs.getString(4));
 				   curriculum.setConfidencial(rs.getBoolean(5));  
 			   }
 			   System.out.println("Carga de Curriculum exitosa");
@@ -131,8 +131,8 @@ public class CurriculumDAO {
 				   datoAcademico.setRun(rs.getInt(2));
 				   datoAcademico.setIdCurriculum(rs.getInt(3));
 				   datoAcademico.setEstablecimiento(rs.getString(4));
-				   datoAcademico.setInicio(rs.getDate(5));
-				   datoAcademico.setFin(rs.getDate(6));
+				   datoAcademico.setInicio(rs.getString(5));
+				   datoAcademico.setFin(rs.getString(6));
 				   datoAcademico.setDescripcion(rs.getString(7));
 				   datosAcademicos.add(datoAcademico);
 			   }
@@ -154,8 +154,8 @@ public class CurriculumDAO {
 				   laboral.setIdCurriculum(rs.getInt(3));
 				   laboral.setEstablecimiento(rs.getString(4));
 				   laboral.setCargo(rs.getString(5));
-				   laboral.setInicio(rs.getDate(6));
-				   laboral.setFin(rs.getDate(7));
+				   laboral.setInicio(rs.getString(6));
+				   laboral.setFin(rs.getString(7));
 				   laboral.setDescripcion(rs.getString(8));
 				   laborales.add(laboral);
 			   }
