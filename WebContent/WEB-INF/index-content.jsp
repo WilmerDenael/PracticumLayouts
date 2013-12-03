@@ -8,11 +8,8 @@
 <div id="backContenido">
  	<div id="contenido">
 		<% if (currentUser.getType() == 1) {%>
-			<h2>Inicio alumno run: <%= Integer.toString(currentUser.getRut()) %></h2>
-			<a href="mostrarDatosActuales.jsp">Mostrar datos actuales</a></br>
-			<a href="modificarCuenta.jsp">Modificar datos de cuenta</a></br>
-			<a href="ingresarInfoPersonal.jsp">Ingresar información personal</a></br>
-			<a href="ingresarCurriculum.jsp">Ingresar curriculum</a></br>
+			<h2><center>Interfaz de alumno Run: <%= Integer.toString(currentUser.getRut()) %></center></h2>
+			
 			<a href="testListas.jsp">TEST LISTAR IDIOMAS</a></br>
 			<!--  <form action="/Practicum/testListas">
 				<input type="hidden" name="test">
@@ -20,10 +17,8 @@
 			</form>-->
 			
 		<% }else if (currentUser.getType() == 2) { %>
-			<h2>Inicio empresa rut: <%= Integer.toString(currentUser.getRut()) %></h2>
-			<a href="mostrarDatosActuales.jsp">Mostrar datos actuales</a></br>
-			<a href="modificarCuenta.jsp">Modificar datos de cuenta</a></br>
-			<a href="ingresarInfoPersonal.jsp">Ingresar información de empresa</a></br>
+			<h2><center>Interfaz de empresa Rut: <%= Integer.toString(currentUser.getRut()) %></center></h2>
+			
 		<% } %>
 		
 		
