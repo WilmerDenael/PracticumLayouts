@@ -64,8 +64,24 @@ try
    		 	}else{
    		 		response.sendRedirect("invalidLogin.jsp"); //error page 
    		 	}
-//		}else if(prueba.getType()==3){ Implementar con profesor
-		}		
+		//}else if(prueba.getType()==3){ login profesor
+			
+		}else if(prueba.getType()==4){
+			user = new AdminBean();
+			user.parseUserBean(prueba);
+   		 	user=AdminDAO.login(user);
+   		 	if(user.isLegit()){
+		 		AdminBean adminUser = new AdminBean();
+		 		adminUser = AdminDAO.selectAdmin(user);
+		 		HttpSession session = request.getSession(true);
+		 		session.setAttribute("currentSessionUser",adminUser);
+		 		System.out.println("tipo: "+adminUser.getType());
+		 		response.sendRedirect("index.jsp"); //logged-in page      
+		 	}else{
+		 		response.sendRedirect("invalidLogin.jsp"); //error page 
+		 	}
+		}
+    	 
      }
 	        
      else 
