@@ -1,4 +1,4 @@
-drop database if exists practicum;
+ï»¿drop database if exists practicum;
 create database practicum;
 use practicum;
 
@@ -144,9 +144,9 @@ create table recomendaciones(
 create table asignaturas(
 	id int,
 	asignatura varchar(50),
-	desarrollo int,
-	base_de_datos int,
-	redes int,
+	desarrollo float,
+	base_de_datos float,
+	redes float,
 	primary key(id)
 );
 
@@ -158,6 +158,15 @@ create table notas_alumnos(
 	foreign key(id_asignatura) references asignaturas(id) on delete cascade on update cascade,
 	primary key(run,id_asignatura)
 );
+
+create table administradores(
+	run int,
+	email varchar(50),
+	pass blob,
+	nombre varchar(30),
+	primary key(run),
+	foreign key(run) references usuarios(id) on delete cascade on update cascade
+	);	
 
 -- Trigger para insertar usuarios
 	
@@ -181,6 +190,12 @@ create trigger inserta_profesor before insert on profesores for each row
 	end
 ??
 
+create trigger inserta_administrador before insert on administradores for each row
+	begin
+		insert into usuarios values(new.run,4);
+	end
+??
+
 -- Triggers para borrar usuario
 
 create trigger borra_alumno before delete on alumnos for each row
@@ -196,6 +211,12 @@ create trigger borra_empresa before delete on empresas for each row
 ??
 
 create trigger borra_profesor before delete on profesores for each row
+	begin
+		delete from usuarios where id = old.run;
+	end
+??
+
+create trigger borra_administrador before delete on administradores for each row
 	begin
 		delete from usuarios where id = old.run;
 	end
@@ -260,78 +281,79 @@ insert into manejo_idiomas values(5,123456789,1,'Medio');
 
 insert into empresas values (987654321,'gatos.inc@gatin.com',AES_ENCRYPT('gatin','gatin'),'Gatos INC',69,'Gatunesca','Exportacion de Gatos Menores de Edad','Kitty #32, Catland','Empresa dedicada a la exportacion de gatitos menores de edad');
 
-insert into profesores values (111111111,'don.gato@gatouv.cat',AES_ENCRYPT('gatin','gatin'),'Gaston','Gatuso','Física','Magister En Ciencias Cuanticas de los Gatos');
+insert into profesores values (111111111,'don.gato@gatouv.cat',AES_ENCRYPT('gatin','gatin'),'Gaston','Gatuso','Fisica','Magister En Ciencias Cuanticas de los Gatos');
 
 insert into recomendaciones values(111111111,123456789,'Un gato muy esforzado a la hora de jugar con lana');
 
-
+-- (desarrollo, base de datos, redes)
 insert into asignaturas values (100,'Algebra Elemental',0,0,0);
-insert into asignaturas values (101,'Cálculo Diferencial',0,0,0);
-insert into asignaturas values (102,'Fundamentos de Programación',0,0,0);
-insert into asignaturas values (103,'Historia General de las Ciencias y las Tecnologías',0,0,0);
-insert into asignaturas values (104,'Formación Valórica Personal',0,0,0);
-insert into asignaturas values (110,'Física',0,0,0);
-insert into asignaturas values (111,'Cálculo Integral',0,0,0);
-insert into asignaturas values (112,'Programación I',1,0,0);
-insert into asignaturas values (113,'Introducción al Hardware',0,0,1);
-insert into asignaturas values (114,'Filosofía de las Ciencias',0,0,0);
-insert into asignaturas values (200,'Física Experimental',0,0,0);
-insert into asignaturas values (201,'Cálculo Multivariable',0,0,0);
-insert into asignaturas values (202,'Programación II',1,0,0);
-insert into asignaturas values (203,'Sistemas Digitales',0,0,1);
+insert into asignaturas values (101,'Calculo Diferencial',0,0,0);
+insert into asignaturas values (102,'Fundamentos de Programacion',0,0,0);
+insert into asignaturas values (103,'Historia General de las Ciencias y las Tecnologias',0,0,0);
+insert into asignaturas values (104,'Formacion Valorica Personal',0,0,0);
+insert into asignaturas values (110,'Fisica',0,0,0);
+insert into asignaturas values (111,'Calculo Integral',0,0,0);
+insert into asignaturas values (112,'Programacion I',1,1,1);
+insert into asignaturas values (113,'Introduccion al Hardware',0,0,2);
+insert into asignaturas values (114,'Filosofia de las Ciencias',0,0,0);
+insert into asignaturas values (200,'Fisica Experimental',0,0,0);
+insert into asignaturas values (201,'Calculo Multivariable',0,0,0);
+insert into asignaturas values (202,'Programacion II',1,1,1);
+insert into asignaturas values (203,'Sistemas Digitales',0,0,2);
 insert into asignaturas values (204,'Estructuras Discretas',0,0,0);
-insert into asignaturas values (205,'Asignatura de Formación General I',0,0,0);
-insert into asignaturas values (210,'Álgebra Lineal',0,0,0);
-insert into asignaturas values (211,'Estructura de Datos',1,1,0);
-insert into asignaturas values (212,'Arquitectura de Computadores',0,0,1);
-insert into asignaturas values (213,'Teoría de Sistemas',0,0,0);
+insert into asignaturas values (205,'Asignatura de Formacion General I',0,0,0);
+insert into asignaturas values (210,'Algebra Lineal',0,0,0);
+insert into asignaturas values (211,'Estructura de Datos',1,1,1);
+insert into asignaturas values (212,'Arquitectura de Computadores',0,0,2);
+insert into asignaturas values (213,'Teoria de Sistemas',0,0,0);
 insert into asignaturas values (214,'Contabilidad',0,0,0);
-insert into asignaturas values (215,'Asignatura de Formación General II',0,0,0);
+insert into asignaturas values (215,'Asignatura de Formacion General II',0,0,0);
 insert into asignaturas values (300,'Ecuaciones Diferenciales',0,0,0);
 insert into asignaturas values (301,'Electromagnetismo',0,0,0);
-insert into asignaturas values (302,'Análisis y Diseño de Algoritmos',1,0,0);
-insert into asignaturas values (303,'Teoría de Sistemas Operativos',0,0,1);
-insert into asignaturas values (304,'Fundamentos de Ingeniería de Software',1,0,0);
-insert into asignaturas values (305,'Inglés I',0,0,0);
-insert into asignaturas values (310,'Probabilidad y Estadística',0,0,0);
-insert into asignaturas values (311,'Lenguaje y Autómatas',1,1,0);
-insert into asignaturas values (312,'Redes de Computadores',0,0,1);
-insert into asignaturas values (313,'Metodoligías de Análisis',1,0,0);
-insert into asignaturas values (314,'Administración en Informática',0,0,0);
-insert into asignaturas values (315,'Inglés II',0,0,0);
-insert into asignaturas values (400,'Física Contemporánea',0,0,0);
-insert into asignaturas values (401,'Interfaz Hombre-Máquina',1,0,0);
-insert into asignaturas values (402,'Modelo de Datos',0,1,0);
-insert into asignaturas values (403,'Taller de Sistemas Operativos',0,0,1);
-insert into asignaturas values (404,'Metodologías de Diseño',1,0,0);
-insert into asignaturas values (405,'Inglés III',0,0,0);
-insert into asignaturas values (410,'Biología',0,0,0);
-insert into asignaturas values (411,'Desarrollo Web',1,0,0);
-insert into asignaturas values (412,'Sistema de Base de Datos',0,1,0);
-insert into asignaturas values (413,'Arquitectura de Software',1,0,0);
-insert into asignaturas values (414,'Evaluación de Proyectos',1,0,0);
-insert into asignaturas values (415,'Lenguajes de Programación',1,1,0);
-insert into asignaturas values (500,'Pruebas de Software',1,0,0);
-insert into asignaturas values (503,'Sistema de Telecomuniaciones',0,0,1);
-insert into asignaturas values (504,'Gestión de Proyectos Informáticos',1,0,0);
-insert into asignaturas values (505,'Investigación de Operaciones',0,0,0);
-insert into asignaturas values (510,'Economía',0,0,0);
-insert into asignaturas values (513,'Fundamentos de Inteligencia Artificial',0,0,0);
-insert into asignaturas values (514,'Taller de Aplicaciones',1,1,1);
-insert into asignaturas values (515,'Simulación',0,0,0);
-insert into asignaturas values (602,'Ética y Legislación',0,0,0);
-insert into asignaturas values (610,'Seminario de Tecnologías de Información y Comunicación',1,1,1);
-insert into asignaturas values (700,'Taller de Base de Datos',0,1,0);
-insert into asignaturas values (701,'Bases de Datos Avanzadas',0,1,0);
-insert into asignaturas values (702,'Minería de Datos',0,1,0);
-insert into asignaturas values (703,'Recuperación de Información',0,1,0);
-insert into asignaturas values (710,'Bibliotecas Digitales',1,0,0);
-insert into asignaturas values (711,'Productividad y Calidad de Software',1,0,0);
-insert into asignaturas values (712,'Computación Gráfica',1,0,0);
-insert into asignaturas values (720,'Taller de Redes',0,0,1);
-insert into asignaturas values (721,'TCP/IP',0,0,1);
-insert into asignaturas values (722,'Administración de Sistemas',0,0,1);
-insert into asignaturas values (723,'Calidad de Servicio en Redes',0,0,1);
+insert into asignaturas values (302,'Analisis y DiseÃ±o de Algoritmos',1,1,1);
+insert into asignaturas values (303,'Teoria de Sistemas Operativos',0,0,2);
+insert into asignaturas values (304,'Fundamentos de Ingenieria de Software',2,0,0);
+insert into asignaturas values (305,'Ingles I',0,0,0);
+insert into asignaturas values (310,'Probabilidad y Estadistica',0,0,0);
+insert into asignaturas values (311,'Lenguaje y Automatas',1,1,1);
+insert into asignaturas values (312,'Redes de Computadores',0,0,2);
+insert into asignaturas values (313,'Metodoligias de Analisis',2,0,0);
+insert into asignaturas values (314,'Administracion en Informatica',0,0,0);
+insert into asignaturas values (315,'Ingles II',0,0,0);
+insert into asignaturas values (400,'Fisica Contemporanea',0,0,0);
+insert into asignaturas values (401,'Interfaz Hombre-Maquina',2,0,0);
+insert into asignaturas values (402,'Modelo de Datos',0,4.7,0);
+insert into asignaturas values (403,'Taller de Sistemas Operativos',0,0,2);
+insert into asignaturas values (404,'Metodologias de DiseÃ±o',2,0,0);
+insert into asignaturas values (405,'Ingles III',0,0,0);
+insert into asignaturas values (410,'Biologia',0,0,0);
+insert into asignaturas values (411,'Desarrollo Web',2,4.6,0);
+insert into asignaturas values (412,'Sistema de Base de Datos',0,4.7,0);
+insert into asignaturas values (413,'Arquitectura de Software',1,1,1);
+insert into asignaturas values (414,'Evaluacion de Proyectos',0,0,0);
+insert into asignaturas values (415,'Lenguajes de Programacion',1,1,1);
+insert into asignaturas values (500,'Pruebas de Software',2,0,0);
+insert into asignaturas values (503,'Sistema de Telecomuniaciones',0,0,2);
+insert into asignaturas values (504,'Gestion de Proyectos Informaticos',2,0,0);
+insert into asignaturas values (505,'Investigacion de Operaciones',0,0,0);
+insert into asignaturas values (510,'Economia',0,0,0);
+insert into asignaturas values (513,'Fundamentos de Inteligencia Artificial',2,2,2);
+insert into asignaturas values (514,'Taller de Aplicaciones',2,2,2);
+insert into asignaturas values (515,'Simulacion',1,1,1);
+insert into asignaturas values (602,'Etica y Legislacion',0,0,0);
+insert into asignaturas values (610,'Seminario de Tecnologias de Informacion y Comunicacion',1,1,1);
+insert into asignaturas values (700,'Taller de Base de Datos',0,3,0);
+insert into asignaturas values (701,'Redes Complejas',0,3,0);
+insert into asignaturas values (702,'Mineria de Datos',0,3,0);
+insert into asignaturas values (703,'Recuperacion de Informacion',0,3,0);
+insert into asignaturas values (710,'Bibliotecas Digitales',3,0,0);
+insert into asignaturas values (711,'Productividad y Calidad de Software',3,0,0);
+insert into asignaturas values (712,'Computacion Grafica',3,0,0);
+insert into asignaturas values (713,'Accesibilidad',3,0,0);
+insert into asignaturas values (720,'Taller de Redes',0,0,3);
+insert into asignaturas values (721,'TCP/IP',0,0,3);
+insert into asignaturas values (722,'Administracion de Sistemas',0,0,3);
+insert into asignaturas values (723,'Calidad de Servicio en Redes',0,0,3);
 
 insert into notas_alumnos values(123456789,100,5.2);
 insert into notas_alumnos values(123456789,101,6.0);
@@ -347,3 +369,5 @@ insert into notas_alumnos values(123456789,200,5.2);
 insert into notas_alumnos values(123456789,201,5.5);
 insert into notas_alumnos values(123456789,202,5.8);
 insert into notas_alumnos values(123456789,203,5.9);
+
+insert into administradores values(123,'admin@choro.com',AES_ENCRYPT('admin','gatin'),'Master Cat');
