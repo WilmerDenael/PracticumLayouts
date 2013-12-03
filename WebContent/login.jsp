@@ -15,6 +15,7 @@
 				<img alt="Universidad de Valparaiso" src="resources/css/img/menu_marca.gif" />
 			</div>
 			<h1>Portal Practicum UV</h1>
+			<div style="position:absolute; top:85px; width:100%; text-align:center;"><img src="resources/css/img/barra.png" ></div>
 		</header>
 		<div id="form1">
 			<h2>Sistema de autentificación</h2>

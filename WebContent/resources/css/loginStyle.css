@@ -4,15 +4,19 @@
 html,body{
 	margin:0;
 	padding:0;
-	background-image:url(img/bg.png);
+	/*background-image:url(img/bg.png);*/
 }
 #main{
+	border:solid;
+	border-width: 1px;
+	border-color: #cecece;
+	-webkit-box-shadow: -1px -1px 20px rgba(206, 206, 206, 0.9);
+	-moz-box-shadow:    -1px -1px 20px rgba(206, 206, 206, 0.9);
+	box-shadow:         -1px -1px 20px rgba(206, 206, 206, 0.9);
 	height:450px;
 	width:800px;
-	position:absolute;
-    left:50%;
-    top:50%;
-    margin:-225px 0 0 -400px;
+	position:relative;
+    margin:5% auto;
 	background-color:#FFF;
 	border-radius:20px;
 }
