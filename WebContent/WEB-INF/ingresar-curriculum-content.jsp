@@ -4,9 +4,11 @@
 
 <% UserBean currentUser = ((UserBean) (session.getAttribute("currentSessionUser")));%>
 
-<form id='curriculum' name='curriculum' action="/Practicum/ingresarCurriculum">
+<div id="backContenido">
+	<div id="contenido">
+		<form id='curriculum' name='curriculum' action="/Practicum/ingresarCurriculum">
 
-<h2>Datos academicos</h2>
+		<h2>Datos academicos</h2>
 			<fieldset>
 				<span class="tab">
 					<a href="#" onclick="agregarCantidadDA(); cloneMe(this); return false;" class="cloneMe" title="Add">+</a>
@@ -51,8 +53,8 @@
 					</tr>
 				</table>
 			</fieldset>
-</br>
-<h2>Historial laboral</h2>
+			</br>
+			<h2>Historial laboral</h2>
 			<fieldset>
 				<span class="tab">
 					<a href="#" onclick="cloneMe(this); return false;" class="cloneMe" title="Add">+</a>
@@ -110,28 +112,31 @@
 		</br>
 		
 		<h2>Areas de interes</h2>
-      <select multiple class="multiselect" id="areas" name="areas[]">
-      <%for( AreaInteres interes : GenericDAO.cargarAreasInteres()) {%>
-      <option value="<%=interes.getArea()%>"><%=interes.getArea()%></option>
-      <% }%>
-      </select>
-      </br>´
-      <h2>Idiomas</h2>
-      <select multiple class="multiselect" id="idiomas" name="idiomas[]">
-      <%for(Idioma idioma : GenericDAO.cargarIdiomas()) {%>
-      <option value="<%=idioma.getIdioma()%>"><%=idioma.getIdioma()%></option>
-      <% }%>
-      </select>
-      </br>
+	      <select multiple class="multiselect" id="areas" name="areas[]">
+	      <%for( AreaInteres interes : GenericDAO.cargarAreasInteres()) {%>
+	      <option value="<%=interes.getArea()%>"><%=interes.getArea()%></option>
+	      <% }%>
+	      </select>
+	      </br>´
+	      <h2>Idiomas</h2>
+	      <select multiple class="multiselect" id="idiomas" name="idiomas[]">
+	      <%for(Idioma idioma : GenericDAO.cargarIdiomas()) {%>
+	      <option value="<%=idioma.getIdioma()%>"><%=idioma.getIdioma()%></option>
+	      <% }%>
+	      </select>
+	      </br>
  
-<input type="hidden" value="1" id="contadorDA" name="contadorDA">
-<input type="hidden" value="1" id="contadorHL" name="contadorHL">      
+		<input type="hidden" value="1" id="contadorDA" name="contadorDA">
+		<input type="hidden" value="1" id="contadorHL" name="contadorHL">      
       
-      <input type="submit">
+      	<input type="submit">
       
-</form></br>
+		</form></br>
 		
 		<a href="index.jsp" target="_self"> <input type="button" name="boton" value="volver" /> </a>
+		
+		</div>
+</div>
 
 <script>
   

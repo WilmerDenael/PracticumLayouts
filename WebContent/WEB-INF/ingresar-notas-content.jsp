@@ -4,50 +4,54 @@
 
 <% UserBean currentUser = ((UserBean) (session.getAttribute("currentSessionUser")));%>
 
-<form id='curriculum' name='curriculum' action="/Practicum/ingresarNotas">
+<div id="backContenido">
+	<div id="contenido">
 
-<h2>Ingreso de notas:</h2>
+		<form id='curriculum' name='curriculum' action="/Practicum/ingresarNotas">
+		
+		<h2>Ingreso de notas:</h2>
 			<fieldset>
 				<span class="tab">
 					<a href="#" onclick="agregarCantidadDA(); cloneMe(this); return false;" class="cloneMe" title="Add">+</a>
 					<a href="#" onclick="descontarCantidadDA();deleteMe(this); return false;" class="deleteMe" title="Delete">x</a>
-				</span>
-				<table cellspacing="10">
-					<tr>
-						<td>
-							<label for="asignatura_da">
-								Asignatura:
-							</label>
-						</td>
-						<td>
-							<select name="asignaturas[]">
-							      <%for( Asignatura asignatura : GenericDAO.cargarAsignaturas()) {%>
-							      <option value="<%=asignatura.getAsignatura()%>"><%=asignatura.getAsignatura()%></option>
-							      <% }%>
-						    </select>
-						</td>
-						<td>
-							<label for="notas_da">
-								Nota:
-							</label>
-						</td>
-						<td>
-							<input type="text" id="nota_da" name="nota_da" />
-						</td>
-					</tr>
-					
-				</table>
-			</fieldset>
-</br>
-
-<input type="hidden" value="1" id="contadorDA" name="contadorDA">
-<input type="hidden" value="1" id="contadorHL" name="contadorHL">      
-      
-      <input type="submit">
-      
-</form></br>
+					</span>
+						<table cellspacing="10">
+							<tr>
+								<td>
+									<label for="asignatura_da">
+										Asignatura:
+									</label>
+								</td>
+								<td>
+									<select name="asignaturas[]">
+										<%for( Asignatura asignatura : GenericDAO.cargarAsignaturas()) {%>
+										<option value="<%=asignatura.getAsignatura()%>"><%=asignatura.getAsignatura()%></option>
+										<% }%>
+									</select>
+								</td>
+								<td>
+									<label for="notas_da">
+										Nota:
+									</label>
+								</td>
+								<td>
+									<input type="text" id="nota_da" name="nota_da" />
+								</td>
+							</tr>
+						</table>
+					</fieldset>
+					</br>
 		
-		<a href="index.jsp" target="_self"> <input type="button" name="boton" value="volver" /> </a>
+					<input type="hidden" value="1" id="contadorDA" name="contadorDA">
+					<input type="hidden" value="1" id="contadorHL" name="contadorHL">      
+		      
+		      		<input type="submit">
+      
+		</form></br>
+		
+	<a href="index.jsp" target="_self"> <input type="button" name="boton" value="volver" /> </a>
+	</div>
+</div>
 
 <script>
   
