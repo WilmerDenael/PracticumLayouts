@@ -2,7 +2,7 @@ package com.practicum.util;
 
 public class Asignatura {
 	private String asignatura;
-	private int nota;
+	private float nota;
 	private float desarrollo;
 	private float baseDeDatos;
 	private float redes;
@@ -13,10 +13,10 @@ public class Asignatura {
 	public void setAsignatura(String asignatura) {
 		this.asignatura = asignatura;
 	}
-	public int getNota() {
+	public float getNota() {
 		return nota;
 	}
-	public void setNota(int nota) {
+	public void setNota(float nota) {
 		this.nota = nota;
 	}
 	public float getDesarrollo() {
