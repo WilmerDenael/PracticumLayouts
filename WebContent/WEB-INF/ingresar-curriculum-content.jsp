@@ -17,20 +17,20 @@
 				<table cellspacing="10">
 					<tr>
 						<td>
-							<label for="descripcion_da">
-								Descipcion:
-							</label>
-						</td>
-						<td>
-							<input type="text" id="descripcion_da" name="descripcion_da" />
-						</td>
-						<td>
 							<label for="establecimiento_da">
 								Establecimiento:
 							</label>
 						</td>
 						<td>
 							<input type="text" id="establecimiento_da" name="establecimiento_da" />
+						</td>
+						<td>
+							<label for="descripcion_da">
+								Descripción:
+							</label>
+						</td>
+						<td>
+							<input type="text" id="descripcion_da" name="descripcion_da" />
 						</td>
 					</tr>
 					<tr>
@@ -44,7 +44,7 @@
 						</td>
 						<td>
 							<label for="fechaTermino_da">
-								Fecha Termino:
+								Fecha Término:
 							</label>
 						</td>
 						<td>
@@ -63,20 +63,21 @@
 				<table cellspacing="10">
 					<tr>
 						<td>
-							<label for="descripcion_hl">
-								Descipcion:
-							</label>
-						</td>
-						<td>
-							<input type="text" id="descripcion_hl" name="descripcion_hl" />
-						</td>
-						<td>
+							
 							<label for="establecimiento_hl">
 								Establecimiento:
 							</label>
 						</td>
 						<td>
 							<input type="text" id="establecimiento_hl" name="establecimiento_hl" />
+						</td>
+						<td>
+							<label for="descripcion_hl">
+								Descripción
+							</label>							
+						</td>
+						<td>
+							<input type="text" id="descripcion_hl" name="descripcion_hl" />
 						</td>
 					</tr>
 					<tr>
@@ -100,7 +101,7 @@
 						</td>
 						<td>
 							<label for="fechaTermino_hl">
-								Fecha Termino:
+								Fecha Término:
 							</label>
 						</td>
 						<td>
@@ -110,18 +111,49 @@
 				</table>
 			</fieldset>
 		</br>
+	      
+	      <h2>Idiomas</h2>
+	      <fieldset>
+				<span class="tab">
+					<a href="#" onclick="cloneMe(this); return false;" class="cloneMe" title="Add">+</a>
+					<a href="#" onclick="deleteMe(this); return false;" class="deleteMe" title="Delete">x</a>
+				</span>
+				<table cellspacing="10">
+					<tr>
+						<td>
+									<label for="idiomas_da">
+										Idiomas:
+									</label>
+						</td>
+						<td>
+					      <select name="idiomas[]">
+					      <%for(Idioma idioma : GenericDAO.cargarIdiomas()) {%>
+					      <option value="<%=idioma.getIdioma()%>"><%=idioma.getIdioma()%></option>
+					      <% }%>
+					      </select>
+					      </br>
+					    </td>
+					    <td>
+									<label for="nivel_da">
+										Nivel:
+									</label>
+						</td>
+						<td>
+					      <select name="nivel[]">
+					      	<option value="basico">Básico</option>
+					      	<option value="medio">Medio</option>
+					      	<option value="avanzado">Avanzado</option>
+					      </select>
+					      </br>
+					    </td>
+					 </tr>
+				</table>
+		</fieldset>
 		
 		<h2>Areas de interes</h2>
 	      <select multiple class="multiselect" id="areas" name="areas[]">
 	      <%for( AreaInteres interes : GenericDAO.cargarAreasInteres()) {%>
 	      <option value="<%=interes.getArea()%>"><%=interes.getArea()%></option>
-	      <% }%>
-	      </select>
-	      </br>´
-	      <h2>Idiomas</h2>
-	      <select multiple class="multiselect" id="idiomas" name="idiomas[]">
-	      <%for(Idioma idioma : GenericDAO.cargarIdiomas()) {%>
-	      <option value="<%=idioma.getIdioma()%>"><%=idioma.getIdioma()%></option>
 	      <% }%>
 	      </select>
 	      </br>

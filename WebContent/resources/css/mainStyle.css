@@ -209,21 +209,24 @@ footer{
 
 fieldset
 {
-	background: #ffc;
-	border: 1px solid #999;
+	background: #f7f7f7;
+	border:1px solid #cecece;
 	position: relative;
+	width:80%;
+	margin: 0 auto;
 }
 
 fieldset.duplicate,
 fieldset.duplicate span.tab
 {
-	background: #eef;
+
+	background: #f7f7f7;
 }
 
 span.tab
 {
-	background: #ffc;
-	border-color: #999;
+	background: #f7f7f7;
+	border-color: #cecece;
 	border-style: solid;
 	border-width: 1px 1px 1px 0;
 	display: block;
