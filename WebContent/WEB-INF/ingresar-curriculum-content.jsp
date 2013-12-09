@@ -111,8 +111,8 @@
 		
 		<h2>Areas de interes</h2>
       <select multiple class="multiselect" id="areas" name="areas[]">
-      <%for(AreaInteres areaInteres : GenericDAO.cargarAreasInteres()) {%>
-      <option value="<%=areaInteres.getArea()%>"><%=areaInteres.getArea()%></option>
+      <%for( AreaInteres interes : GenericDAO.cargarAreasInteres()) {%>
+      <option value="<%=interes.getArea()%>"><%=interes.getArea()%></option>
       <% }%>
       </select>
       </br>´
