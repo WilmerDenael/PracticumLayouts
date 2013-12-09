@@ -27,30 +27,49 @@ public class IngresarCurriculumServlet extends HttpServlet {
 			System.out.println("RUT SESION: "+alumno.getRut());
 			System.out.println("TIPO SESION: "+alumno.getType());
 			
-			//ACA CAPTURAR LOS DATOS DEL FORMULARIO
+			//Se  Definen las estructuras
+			
+			Curriculum curriculum = new Curriculum();
+			List<AreaInteres> listAreas = new ArrayList<AreaInteres>();
+			List<Idioma> listIdiomas = new ArrayList<Idioma>();
+			List<DatoAcademico> datosAcademicos= new ArrayList<DatoAcademico>();
+			List<HistorialLaboral> laborales = new ArrayList<HistorialLaboral>();
+			
 			
 			// Captura de datos academicos 
+			DatoAcademico academico = new DatoAcademico();
 			String contadorDA = request.getParameter("contadorDA");
 			String descripcion_da = request.getParameter("descripcion_da");
 			String establecimiento_da = request.getParameter("establecimiento_da");
 			String fechaInicio_da = request.getParameter("fechaInicio_da");
 			String fechaTermino_da = request.getParameter("fechaTermino_da");
+			int cda = Integer.parseInt(contadorDA);
 			System.out.println(contadorDA + " " + descripcion_da + " " + establecimiento_da + " " + 
 					fechaInicio_da + " " + fechaTermino_da);
-			
-			int cda = Integer.parseInt(contadorDA);
+			academico.setDescripcion(descripcion_da);
+			academico.setEstablecimiento(establecimiento_da);
+			academico.setInicio(fechaInicio_da);
+			academico.setFin(fechaTermino_da);
+			datosAcademicos.add(academico);
 			
 			for (int i = 2; i <= cda; i++) {
+				academico= new DatoAcademico();
 				descripcion_da = request.getParameter("descripcion_da:"+i);
 				establecimiento_da = request.getParameter("establecimiento_da:"+i);
 				fechaInicio_da = request.getParameter("fechaInicio_da:"+i);
 				fechaTermino_da = request.getParameter("fechaTermino_da:"+i);
 				System.out.println(contadorDA + " " + descripcion_da + " " + establecimiento_da + " " + 
 						fechaInicio_da + " " + fechaTermino_da);
+				academico.setDescripcion(descripcion_da);
+				academico.setEstablecimiento(establecimiento_da);
+				academico.setInicio(fechaInicio_da);
+				academico.setFin(fechaTermino_da);
+				datosAcademicos.add(academico);
 			}
-			
+				
+		System.out.println("Lista de datos academicos "+datosAcademicos.size());
 //			// Captura de historial academico 
-			
+			HistorialLaboral laboral = new HistorialLaboral();
 			String contadorHL = request.getParameter("contadorHL");
 			String descripcion_hl = request.getParameter("descripcion_hl");
 			String establecimiento_hl = request.getParameter("establecimiento_hl");
@@ -59,10 +78,16 @@ public class IngresarCurriculumServlet extends HttpServlet {
 			String fechaTermino_hl = request.getParameter("fechaTermino_hl");
 			System.out.println(contadorHL + " " + descripcion_hl + " " + establecimiento_hl + " " + cargo_hl + " " + 
 					fechaInicio_hl + " " + fechaTermino_hl);
-			
+			laboral.setDescripcion(descripcion_hl);
+			laboral.setEstablecimiento(establecimiento_hl);
+			laboral.setCargo(cargo_hl);
+			laboral.setInicio(fechaInicio_hl);
+			laboral.setFin(fechaTermino_hl);
+			laborales.add(laboral);
 			int chl = Integer.parseInt(contadorHL);
 			
 			for (int i = 2; i <= chl; i++) {
+				laboral = new HistorialLaboral();
 				descripcion_hl = request.getParameter("descripcion_hl"+i);
 				establecimiento_hl = request.getParameter("establecimiento_hl"+i);
 				cargo_hl = request.getParameter("cargo_hl"+i);
@@ -70,19 +95,30 @@ public class IngresarCurriculumServlet extends HttpServlet {
 				fechaTermino_hl = request.getParameter("fechaTermino_hl"+i);
 				System.out.println(contadorHL + " " + descripcion_hl + " " + establecimiento_hl + " " + cargo_hl + " " + 
 						fechaInicio_hl + " " + fechaTermino_hl);
+				laboral.setDescripcion(descripcion_hl);
+				laboral.setEstablecimiento(establecimiento_hl);
+				laboral.setCargo(cargo_hl);
+				laboral.setInicio(fechaInicio_hl);
+				laboral.setFin(fechaTermino_hl);
+				laborales.add(laboral);
 			}
-
+			System.out.println("Laboral: "+laborales.size());
 			String[] areas = request.getParameterValues("areas[]");
+			AreaInteres interes;
 			for(int i =0; i < areas.length; i++){
-				System.out.println(areas[i]);
-				
+				interes= new AreaInteres();
+				interes.setArea(areas[i]);
+				listAreas.add(interes);
 			}
-			
-			String[] idiomas = request.getParameterValues("idiomas[]");
-			for(int i =0; i < idiomas.length; i++){
-				System.out.println(idiomas[i]);
-				
-			}
+			System.out.println("Areas de Interes: "+listAreas.size());
+//			Idioma idioma;
+//			String[] idiomas = request.getParameterValues("idiomas[]");
+//			for(int i =0; i < idiomas.length; i++){
+//				idioma= new Idioma();
+//				idioma.setIdioma(idiomas[i]);
+//				listIdiomas.add(idioma);
+//			}
+//			System.out.println("Lista de Idiomas: " +listIdiomas.size());
 			//System.out.println(areas.toString());
 			
 //			String primerNombre =request.getParameter("establecimiento");
@@ -95,15 +131,7 @@ public class IngresarCurriculumServlet extends HttpServlet {
 //			String nacimiento =request.getParameter("nacimiento"); //FALTA GUARDAR ESTE DATO !
 //			String referencia =request.getParameter("referencia");
 //			String datosExtra =request.getParameter("datosExtra");
-			
-			//PASO DE DATOS
-			
-//			Curriculum curriculum = new Curriculum();
-//			List<AreaInteres> areas = new ArrayList<AreaInteres>();
-//			List<Idioma> idiomas = new ArrayList<Idioma>();
-//			List<DatoAcademico> datosAcademicos= new ArrayList<DatoAcademico>();
-//			List<HistorialLaboral> laborales = new ArrayList<HistorialLaboral>();
-			
+					
 //			// SE ASOCIAN LOS DATOS AL CURRICULUM
 //			curriculum.setId(1);
 //			curriculum.setRun(alumno.getRut());
