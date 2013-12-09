@@ -11,10 +11,7 @@
 			<h2><center>Interfaz de alumno Run: <%= Integer.toString(currentUser.getRut()) %></center></h2>
 			
 			<a href="testListas.jsp">TEST LISTAR IDIOMAS</a></br>
-			<!--  <form action="/Practicum/testListas">
-				<input type="hidden" name="test">
-				<input type="submit" value="TEST LISTA">
-			</form>-->
+			<a href="ingresarNotas.jsp">Ingresar notas</a></br>
 			
 		<% }else if (currentUser.getType() == 2) { %>
 			<h2><center>Interfaz de empresa Rut: <%= Integer.toString(currentUser.getRut()) %></center></h2>
