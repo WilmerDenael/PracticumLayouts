@@ -95,8 +95,8 @@ public class AdminDAO{
  		   currentCon = ConnectionManager.getConnection();
  		   
  		   //Carga Curriculum
- 		   String query = "SELECT a.run, a.email, AES_DECRYPT(pass,'gatin'), a.nombre" +
- 				   		  "from admin a where a.run = ?";
+ 		   String query = "SELECT a.run, a.email, AES_DECRYPT(pass,'gatin'), a.nombre " +
+ 				   		  "from administradores a where a.run = ?";
  		   stmt = currentCon.prepareStatement(query);
  		   stmt.setInt(1,user.getRut());
  		   System.out.println("Your run is " + user.getRut());    

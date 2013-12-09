@@ -10,17 +10,18 @@ public class GenericDAO {
 	static Connection currentCon = null;
 	static ResultSet rs = null;  
 	
-	public ArrayList<AreaInteres> cargarAreasInteres(){
+	public static List<AreaInteres> cargarAreasInteres(){
 		
-		ArrayList<AreaInteres> intereses = new ArrayList<AreaInteres>();
-		PreparedStatement stmt = null;
-		
+		List<AreaInteres> intereses = new ArrayList<AreaInteres>();
+		Statement stmt = null;
+		String query = "SELECT * FROM areas_interes";
 		try{
-			String query = "SELECT * FROM areas_interes";
-			stmt = currentCon.prepareStatement(query);
-		    rs = stmt.executeQuery();
+			currentCon = ConnectionManager.getConnection();
+			stmt = currentCon.createStatement();
+			rs = stmt.executeQuery(query);
+			AreaInteres interes;
 			while(rs.next()){
-				AreaInteres interes = new AreaInteres();
+				interes = new AreaInteres();
 				interes.setId(rs.getInt(1));
 				interes.setArea(rs.getString(2));
 				interes.setDesarrollo(rs.getInt(3));
@@ -28,14 +29,10 @@ public class GenericDAO {
 				interes.setRedes(rs.getInt(5));
 				intereses.add(interes);
 			}
-			
-			System.out.println("Carga de Intereses exitosa");
-		
+			System.out.println("Se cargaron: "+intereses.size()+" interes(es)");
 		}catch (Exception ex){
-			System.out.println("Log In failed: An Exception has occurred! " + ex);
-			return null;
+			System.out.println("Error en la carga de Areas " + ex);
 		}
-		
 		return intereses;
 	}
 	
@@ -56,7 +53,7 @@ public class GenericDAO {
 			   } 
 			 System.out.println("Se cargaron: "+idiomas.size()+" idioma(s)"); 
 		  }catch(Exception ex){
-			System.out.println("Log In failed: An Exception has occurred! " + ex); 
+			System.out.println("Error en la carga de Idiomas " + ex); 
 		  }
 		  return idiomas;
 	  }

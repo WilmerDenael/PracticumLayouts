@@ -27,7 +27,7 @@ public class UserDAO
 	    
    // "System.out.println" prints in the console; Normally used to trace the process
    System.out.println("Your rut is " + rut);          
-   System.out.println("Query: "+searchQuery);
+   System.out.println("Query in UserBean Login: "+searchQuery);
 	    
    try 
    {

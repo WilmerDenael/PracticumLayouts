@@ -28,13 +28,13 @@ try
      int rut = Integer.parseInt(rutForm);
      prueba.setRut(rut);
      prueba.setPassword(request.getParameter("pass"));
-     prueba = UserDAO.login(prueba);	   		    
+     prueba = UserDAO.login(prueba);
      if (prueba.isValid())
      {  
     	 if (prueba.getType()==1) {
     		 System.out.println("Usuario Valido de tipo alumno");
     		 user = new AlumnoBean();
-    		 System.out.println("Prueba tipe: "+prueba.getType());
+    		 System.out.println("Prueba type: "+prueba.getType());
     		 user.parseUserBean(prueba);
     		 user=AlumnoDAO.login(user);
     		 if(user.isLegit()){
@@ -67,9 +67,12 @@ try
 		//}else if(prueba.getType()==3){ login profesor
 			
 		}else if(prueba.getType()==4){
+			System.out.println("Usuario Valido de tipo administrador");
 			user = new AdminBean();
+			
 			user.parseUserBean(prueba);
    		 	user=AdminDAO.login(user);
+   		 	System.out.println("User type: "+user.getType());
    		 	if(user.isLegit()){
 		 		AdminBean adminUser = new AdminBean();
 		 		adminUser = AdminDAO.selectAdmin(user);
