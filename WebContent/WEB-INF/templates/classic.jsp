@@ -15,17 +15,6 @@
 <script src="${requestScope.js2}" type="text/javascript"></script>
 <script src="${requestScope.js3}" type="text/javascript"></script>
 <script src="${requestScope.js4}" type="text/javascript"></script>
-<script>
-
-$(document).ready(function() {
-    $('#idiomas').multiSelect()
-  });
-  
-$(document).ready(function() {
-    $('#areas').multiSelect()
-  });
-  
-</script>
 
 <title> ${requestScope.title} </title>
 </head>
@@ -38,7 +27,7 @@ $(document).ready(function() {
         
     	<jsp:include page="${requestScope.body}" />
     	
-        <jsp:include page="${requestScope.footer}" />
+        <!--<jsp:include page="${requestScope.footer}" />-->
     </div>
 		
 </body>

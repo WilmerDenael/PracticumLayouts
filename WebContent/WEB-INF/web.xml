@@ -52,4 +52,12 @@
       <servlet-name>ingresarInfoEmpresaServlet</servlet-name>
       <url-pattern>/ingresarInfoEmpresa</url-pattern>
   </servlet-mapping>
+    <servlet>
+      <servlet-name>IngresarCurriculumServlet</servlet-name>
+      <servlet-class>com.practicum.servlet.IngresarCurriculumServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>IngresarCurriculumServlet</servlet-name>
+      <url-pattern>/ingresarCurriculum</url-pattern>
+  </servlet-mapping>
 </web-app>
