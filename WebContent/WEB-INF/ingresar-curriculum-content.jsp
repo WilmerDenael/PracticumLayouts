@@ -115,18 +115,18 @@
 	      <h2>Idiomas</h2>
 	      <fieldset>
 				<span class="tab">
-					<a href="#" onclick="cloneMe(this); return false;" class="cloneMe" title="Add">+</a>
-					<a href="#" onclick="deleteMe(this); return false;" class="deleteMe" title="Delete">x</a>
+					<a href="#" onclick="agregarCantidadID();cloneMe(this); return false;" class="cloneMe" title="Add">+</a>
+					<a href="#" onclick="descontarCantidadID();deleteMe(this); return false;" class="deleteMe" title="Delete">x</a>
 				</span>
 				<table cellspacing="10">
 					<tr>
 						<td>
-									<label for="idiomas_da">
+									<label for="idiomas">
 										Idiomas:
 									</label>
 						</td>
 						<td>
-					      <select name="idiomas[]">
+					      <select name="idiomas">
 					      <%for(Idioma idioma : GenericDAO.cargarIdiomas()) {%>
 					      <option value="<%=idioma.getIdioma()%>"><%=idioma.getIdioma()%></option>
 					      <% }%>
@@ -134,12 +134,12 @@
 					      </br>
 					    </td>
 					    <td>
-									<label for="nivel_da">
+									<label for="nivel">
 										Nivel:
 									</label>
 						</td>
 						<td>
-					      <select name="nivel[]">
+					      <select name="nivea">
 					      	<option value="basico">Básico</option>
 					      	<option value="medio">Medio</option>
 					      	<option value="avanzado">Avanzado</option>
@@ -160,7 +160,7 @@
  
 		<input type="hidden" value="1" id="contadorDA" name="contadorDA">
 		<input type="hidden" value="1" id="contadorHL" name="contadorHL">      
-      
+      	<input type="hidden" value="1" id="contadorID" name="contadorID">
       	<input type="submit">
       
 		</form></br>
@@ -174,15 +174,24 @@
   
 function agregarCantidadDA(){
 	document.forms["curriculum"].contadorDA.value++;
-	console.log("chupala!");
+	console.log("raton!");
 }  
 function descontarCantidadDA(){
 	document.forms["curriculum"].contadorDA.value--;
 }   
+ 
+function agregarCantidadID(){
+	document.forms["curriculum"].contadorID.value++;
+	console.log("raton!");
+}  
+function descontarCantidadID(){
+	document.forms["curriculum"].contadorID.value--;
+}   
+  
   
 function agregarCantidadHL(){
 	document.forms["curriculum"].contadorHL.value++;
-	console.log("chupala!");
+	console.log("raton!");
 }  
 function descontarCantidadHL(){
 	document.forms["curriculum"].contadorHL.value--;
