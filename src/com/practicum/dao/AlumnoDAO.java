@@ -18,12 +18,7 @@ public class AlumnoDAO{
 	      int rut = bean.getRut();    
 	      String searchQuery =
 	            "select(AES_DECRYPT(pass,'gatin')) from alumnos where run="
-	                     + rut;
-		    
-	   // "System.out.println" prints in the console; Normally used to trace the process
-	   System.out.println("Your rut is " + rut);          
-	   System.out.println("Query: "+searchQuery);
-		    
+	                     + rut;		    
 	   try 
 	   {
 	      //connect to DB 
@@ -31,19 +26,15 @@ public class AlumnoDAO{
 	      stmt=currentCon.createStatement();
 	      rs = stmt.executeQuery(searchQuery);	        
 	      boolean more = rs.next();
-	      // if user does not exist set the isValid variable to false
 	      if (!more) 
 	      {
 	         System.out.println("Sorry, you are not a registered user! Please sign up first");
 	         bean.setValid(false);
 	      } 
-		        
-	      //if user exists set the isLegit variable to true
 	      else if (more) 
 	      {
 	    	 System.out.println("Hay resultados!");
 	    	 String pass=rs.getString(1); 
-	         System.out.println("Password: "+pass);
 	         if(pass.equals(bean.getPassword())){
 	        	 bean.setLegit(true);
 	         }
@@ -52,7 +43,7 @@ public class AlumnoDAO{
 
 	   catch (Exception ex) 
 	   {
-	      System.out.println("Log In failed: An Exception has occurred! " + ex);
+	      System.out.println("Log In del Alumno ha fallado! " + ex);
 	   } 
 		    
 	   //some exception handling

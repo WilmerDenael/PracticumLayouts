@@ -52,10 +52,8 @@ public class UserDAO
 
    catch (Exception ex) 
    {
-      System.out.println("Log In failed: An Exception has occurred! " + ex);
+      System.out.println("Se produjo un error al buscar en la tabla usuarios! " + ex);
    } 
-	    
-   //some exception handling
    finally 
    {
       if (rs != null)	{
@@ -94,7 +92,6 @@ return bean;
    public static boolean genericStringUpdate(String tableName, String parameter, String updatedValue, String whereIdentifier, int whereValue){
 	   Statement stmt = null;
 	   String query= "UPDATE "+tableName+" SET "+parameter+"='"+updatedValue+"' WHERE "+whereIdentifier+"="+whereValue;
-	   System.out.println(query);
 	   try {
 	         currentCon = ConnectionManager.getConnection();
 	         stmt=currentCon.createStatement();
@@ -102,7 +99,7 @@ return bean;
         	 System.out.println("Modificado exitosamente");
         	 return true;
 	   }catch (Exception ex) {
-	         System.out.println("Log In failed: An Exception has occurred! " + ex);
+	         System.out.println("Error al actualizar el String! " + ex);
 	         return false;
 	      }
    }
@@ -115,7 +112,6 @@ return bean;
    public static boolean genericNumberUpdate(String tableName, String parameter, String updatedValue, String whereIdentifier, String whereValue){
 	   Statement stmt = null;
 	   String query= "UPDATE "+tableName+" SET "+parameter+"="+updatedValue+" WHERE "+whereIdentifier+"="+whereValue;
-	   System.out.println(query);
 	   try {
 	         currentCon = ConnectionManager.getConnection();
 	         stmt=currentCon.createStatement();
@@ -123,7 +119,7 @@ return bean;
         	 System.out.println("Modificado exitosamente");
         	 return true;
 	   }catch (Exception ex) {
-	         System.out.println("Log In failed: An Exception has occurred! " + ex);
+	         System.out.println("Error al actualizar el Numero! " + ex);
 	         return false;
 	      }
    }
@@ -144,7 +140,7 @@ return bean;
         	 System.out.println("Modificado exitosamente");
         	 return true;
 	   }catch (Exception ex) {
-	         System.out.println("Log In failed: An Exception has occurred! " + ex);
+	         System.out.println("Error al actualizar el Password! " + ex);
 	         return false;
 	      }
    }
@@ -159,10 +155,9 @@ return bean;
 			ps.executeUpdate();
 			System.out.println("Modificado exitosamente");
 		}catch(Exception ex) {
-	         System.out.println("Log In failed: An Exception has occurred! " + ex);
+	         System.out.println("Error al actualizar la fecha" + ex);
 	         return false;
 	    }
-		
 		return true;
 	}
    

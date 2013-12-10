@@ -39,7 +39,7 @@ public class CurriculumDAO {
 		        	 }					
 				}
 		         List<Idioma> idiomas= curriculum.getIdiomas();
-		         if (idiomas.isEmpty()) {
+		         if (!idiomas.isEmpty()) {
 		        	 for (Idioma idioma : idiomas) {
 		        		 String query2 = "Insert into manejo_idiomas (run,id_curriculum,idioma,nivel) values ("+curriculum.getId()+","+bean.getRut()+",'"+idioma.getIdioma()+"','"+idioma.getNivel()+"')"; 
 		        		 stmt=currentCon.createStatement();
@@ -47,7 +47,7 @@ public class CurriculumDAO {
 		        	 } 
 				}
 		   }catch (Exception ex) {
-		         System.out.println("Log In failed: An Exception has occurred! " + ex);
+		         System.out.println("Error al insertar el curriculum " + ex);
 		      }
 		   
 	   }
@@ -209,7 +209,7 @@ public class CurriculumDAO {
 			   System.out.println("Carga de Intereses exitosa");
 			   
 		   }catch (Exception ex){
-			   System.out.println("Log In failed: An Exception has occurred! " + ex);
+			   System.out.println("Error al seleccionar el curriculum! " + ex);
 			   return null;
 		   }
 

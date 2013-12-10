@@ -17,11 +17,6 @@ public class AdminDAO{
 	      String searchQuery =
 	            "select(AES_DECRYPT(pass,'gatin')) from administradores where run="
 	                     + rut;
-		    
-	   // "System.out.println" prints in the console; Normally used to trace the process
-	   System.out.println("Your rut is " + rut);          
-	   System.out.println("Query: "+searchQuery);
-		    
 	   try 
 	   {
 	      //connect to DB 
@@ -29,19 +24,16 @@ public class AdminDAO{
 	      stmt=currentCon.createStatement();
 	      rs = stmt.executeQuery(searchQuery);	        
 	      boolean more = rs.next();
-	      // if user does not exist set the isValid variable to false
 	      if (!more) 
 	      {
 	         System.out.println("Sorry, you are not a registered user! Please sign up first");
 	         bean.setValid(false);
 	      } 
 		        
-	      //if user exists set the isLegit variable to true
 	      else if (more) 
 	      {
 	    	 System.out.println("Hay resultados!");
 	    	 String pass=rs.getString(1); 
-	         System.out.println("Password: "+pass);
 	         if(pass.equals(bean.getPassword())){
 	        	 bean.setLegit(true);
 	         }
@@ -50,7 +42,7 @@ public class AdminDAO{
 
 	   catch (Exception ex) 
 	   {
-	      System.out.println("Log In failed: An Exception has occurred! " + ex);
+	      System.out.println("Log In del administrador ha fallado " + ex);
 	   } 
 		    
 	   //some exception handling
@@ -97,8 +89,6 @@ public class AdminDAO{
  				   		  "from administradores a where a.run = ?";
  		   stmt = currentCon.prepareStatement(query);
  		   stmt.setInt(1,user.getRut());
- 		   System.out.println("Your run is " + user.getRut());    
- 		   System.out.println("Query: "+ query);
  		   rs = stmt.executeQuery();		   
  		   if(rs.next()){
  			  admin.setRut(rs.getInt(1));
@@ -110,7 +100,7 @@ public class AdminDAO{
  			  admin.setType(user.getType());
  		   } 
  	   }catch (Exception ex){
- 		   System.out.println("Log In failed: An Exception has occurred! " + ex);
+ 		   System.out.println("Error al seleccionar el Administrador " + ex);
  		   return null;
  	   }
 

@@ -17,31 +17,21 @@ public class EmpresaDAO {
 	      String searchQuery =
 	            "select(AES_DECRYPT(pass,'gatin')) from empresas where rut="
 	                     + rut;
-		    
-	   // "System.out.println" prints in the console; Normally used to trace the process
-	   System.out.println("Your rut is " + rut);          
-	   System.out.println("Query: "+searchQuery);
-		    
 	   try 
 	   {
-	      //connect to DB 
 	      currentCon = ConnectionManager.getConnection();
 	      stmt=currentCon.createStatement();
 	      rs = stmt.executeQuery(searchQuery);	        
 	      boolean more = rs.next();
-	      // if user does not exist set the isValid variable to false
 	      if (!more) 
 	      {
 	         System.out.println("Sorry, you are not a registered user! Please sign up first");
 	         bean.setValid(false);
 	      } 
-		        
-	      //if user exists set the isLegit variable to true
 	      else if (more) 
 	      {
 	    	 System.out.println("Hay resultados!");
 	    	 String pass=rs.getString(1); 
-	         System.out.println("Password: "+pass);
 	         if(pass.equals(bean.getPassword())){
 	        	 bean.setLegit(true);
 	         }
@@ -50,10 +40,8 @@ public class EmpresaDAO {
 
 	   catch (Exception ex) 
 	   {
-	      System.out.println("Log In failed: An Exception has occurred! " + ex);
+	      System.out.println("Log In de Empresa ha fallado! " + ex);
 	   } 
-		    
-	   //some exception handling
 	   finally 
 	   {
 	      if (rs != null)	{
@@ -117,8 +105,6 @@ public class EmpresaDAO {
 		         stmt=currentCon.createStatement();
 		         rs = stmt.executeQuery(searchQuery);	        
 		         boolean more = rs.next();
-		   	       
-		         // if user does not exist set the isValid variable to false
 		         if (!more) 
 		         {
 		        	 System.out.println("Un usuario mas");
@@ -127,8 +113,6 @@ public class EmpresaDAO {
 		        	 
 		        	 bean.setValid(true);
 		         } 
-		   	        
-		         //if user exists set the isValid variable to true
 		         else if (more) 
 		         {
 		            bean.setValid(false);
@@ -136,7 +120,7 @@ public class EmpresaDAO {
 		      }
 		      catch (Exception ex) 
 		      {
-		         System.out.println("Log In failed: An Exception has occurred! " + ex);
+		         System.out.println("Error al registrar a la empresa! " + ex);
 		      }
 		      
 		  
@@ -146,16 +130,11 @@ public class EmpresaDAO {
 	   public static UserBean eliminar(UserBean bean){
 			  Statement stmt = null;    	
 		      int rut = bean.getRut();
-		      //rut=rut.toUpperCase(); // Ojo con esta linea!
 		      String Query =
 		              "DELETE FROM empresas WHERE empresas.rut="
 		                       + rut;
 		      String searchQuery =
 		              "select * from empresas where rut="+ rut;
-		            
-		      System.out.println("Your rut is " + rut);    
-		      System.out.println("Query: "+Query);
-
 		      try 
 		      {
 		         currentCon = ConnectionManager.getConnection();
@@ -179,7 +158,7 @@ public class EmpresaDAO {
 		      }
 		      catch (Exception ex) 
 		      {
-		         System.out.println("Log In failed: An Exception has occurred! " + ex);
+		         System.out.println("Se produjo un error al Eliminar la empresa " + ex);
 		      }
 		  return bean;
 		  }
@@ -198,11 +177,7 @@ public class EmpresaDAO {
 					   		  "e.descripcion from empresas e where e.rut = ?";
 			   stmt = currentCon.prepareStatement(query);
 			   stmt.setInt(1,user.getRut());
-			   rs = stmt.executeQuery();
-			   
-			   System.out.println("Your rut is " + user.getRut());    
-			   System.out.println("Query: "+ query);
-			   
+			   rs = stmt.executeQuery();			   
 			   if(rs.next()){
 				   empresa.setRut(rs.getInt(1));
 				   empresa.setEmail(rs.getString(2));
@@ -218,7 +193,7 @@ public class EmpresaDAO {
 				   empresa.setType(user.getType());
 			   } 
 		   }catch (Exception ex){
-			   System.out.println("Log In failed: An Exception has occurred! " + ex);
+			   System.out.println("Error al seleccionar la empresa! " + ex);
 			   return null;
 		   }
 
