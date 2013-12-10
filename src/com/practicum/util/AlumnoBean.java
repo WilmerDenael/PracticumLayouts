@@ -1,7 +1,5 @@
 package com.practicum.util;
 
-import java.util.Date;
-import java.util.List;
 
 public class AlumnoBean extends UserBean{
 	

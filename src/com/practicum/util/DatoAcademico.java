@@ -1,6 +1,5 @@
 package com.practicum.util;
 
-import java.sql.Date;
 
 public class DatoAcademico {
 	
