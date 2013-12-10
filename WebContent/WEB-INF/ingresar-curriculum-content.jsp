@@ -57,8 +57,8 @@
 			<h2>Historial laboral</h2>
 			<fieldset>
 				<span class="tab">
-					<a href="#" onclick="cloneMe(this); return false;" class="cloneMe" title="Add">+</a>
-					<a href="#" onclick="deleteMe(this); return false;" class="deleteMe" title="Delete">x</a>
+					<a href="#" onclick="agregarCantidadHL();cloneMe(this); return false;" class="cloneMe" title="Add">+</a>
+					<a href="#" onclick="agregarCantidadHL();deleteMe(this); return false;" class="deleteMe" title="Delete">x</a>
 				</span>
 				<table cellspacing="10">
 					<tr>
@@ -121,12 +121,12 @@
 				<table cellspacing="10">
 					<tr>
 						<td>
-									<label for="idiomas">
+									<label for="idioma">
 										Idiomas:
 									</label>
 						</td>
 						<td>
-					      <select name="idiomas">
+					      <select name="idioma">
 					      <%for(Idioma idioma : GenericDAO.cargarIdiomas()) {%>
 					      <option value="<%=idioma.getIdioma()%>"><%=idioma.getIdioma()%></option>
 					      <% }%>
@@ -139,7 +139,7 @@
 									</label>
 						</td>
 						<td>
-					      <select name="nivea">
+					      <select name="nivel">
 					      	<option value="basico">Básico</option>
 					      	<option value="medio">Medio</option>
 					      	<option value="avanzado">Avanzado</option>

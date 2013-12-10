@@ -111,7 +111,7 @@ public class IngresarCurriculumServlet extends HttpServlet {
 			idiomaI.setIdioma(idioma);
 			idiomaI.setNivel(nivel);
 			listIdiomas.add(idiomaI);
-			int cid = Integer.parseInt(contadorHL);
+			int cid = Integer.parseInt(contadorID);
 			
 			for (int i = 2; i <= cid; i++) {
 				idiomaI = new Idioma();
