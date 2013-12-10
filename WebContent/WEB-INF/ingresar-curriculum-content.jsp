@@ -11,8 +11,8 @@
 		<h2>Datos academicos</h2>
 			<fieldset>
 				<span class="tab">
-					<a href="#" onclick="agregarCantidadDA(); cloneMe(this); return false;" class="cloneMe" title="Add">+</a>
-					<a href="#" onclick="descontarCantidadDA();deleteMe(this); return false;" class="deleteMe" title="Delete">x</a>
+					<a href="#" onclick="agregarCantidadDA(); cloneMe1(this); return false;" class="cloneMe" title="Add">+</a>
+					<a href="#" onclick="descontarCantidadDA();deleteMe1(this); return false;" class="deleteMe" title="Delete">x</a>
 				</span>
 				<table cellspacing="10">
 					<tr>
@@ -57,8 +57,8 @@
 			<h2>Historial laboral</h2>
 			<fieldset>
 				<span class="tab">
-					<a href="#" onclick="agregarCantidadHL();cloneMe(this); return false;" class="cloneMe" title="Add">+</a>
-					<a href="#" onclick="agregarCantidadHL();deleteMe(this); return false;" class="deleteMe" title="Delete">x</a>
+					<a href="#" onclick="agregarCantidadHL();cloneMe2(this); return false;" class="cloneMe" title="Add">+</a>
+					<a href="#" onclick="agregarCantidadHL();deleteMe2(this); return false;" class="deleteMe" title="Delete">x</a>
 				</span>
 				<table cellspacing="10">
 					<tr>
@@ -115,8 +115,8 @@
 	      <h2>Idiomas</h2>
 	      <fieldset>
 				<span class="tab">
-					<a href="#" onclick="agregarCantidadID();cloneMe(this); return false;" class="cloneMe" title="Add">+</a>
-					<a href="#" onclick="descontarCantidadID();deleteMe(this); return false;" class="deleteMe" title="Delete">x</a>
+					<a href="#" onclick="agregarCantidadID();cloneMe3(this); return false;" class="cloneMe" title="Add">+</a>
+					<a href="#" onclick="descontarCantidadID();deleteMe3(this); return false;" class="deleteMe" title="Delete">x</a>
 				</span>
 				<table cellspacing="10">
 					<tr>

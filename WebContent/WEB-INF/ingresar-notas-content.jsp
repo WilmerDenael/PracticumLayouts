@@ -12,8 +12,8 @@
 		<h2>Ingreso de notas:</h2>
 			<fieldset>
 				<span class="tab">
-					<a href="#" onclick="agregarCantidadNO(); cloneMe(this); return false;" class="cloneMe" title="Add">+</a>
-					<a href="#" onclick="descontarCantidadNO();deleteMe(this); return false;" class="deleteMe" title="Delete">x</a>
+					<a href="#" onclick="agregarCantidadNO(); cloneMe1(this); return false;" class="cloneMe" title="Add">+</a>
+					<a href="#" onclick="descontarCantidadNO();deleteMe1(this); return false;" class="deleteMe" title="Delete">x</a>
 					</span>
 						<table cellspacing="10">
 							<tr>
