@@ -268,39 +268,5 @@ public class AlumnoDAO{
 		   return alumnos ; //se retorna la lista de alumnos solamente con su run y su nombre completo
 	   }
    
-   public static List<Asignatura> selectAsignatura(int run){
-	   
-	   List<Asignatura> asignaturas = new ArrayList<Asignatura>();
-	   PreparedStatement stmt = null;
-	   System.out.println("Preparando Consulta...");
-	   try{
-		   currentCon = ConnectionManager.getConnection();
-		   
-		   //Carga Curriculum
-		   String query = "SELECT a.asignatura, na.nota, a.desarrollo, a.base_de_datos, a.redes " +
-				   		  "from notas_alumnos na, asignaturas a " +
-				   		  "where na.id_asignatura = a.id and na = ?";
-		   System.out.println("Query :" + query);
-		   stmt = currentCon.prepareStatement(query);
-		   stmt.setInt(1,run);
-		   System.out.println("Run: " + run);  
-		   rs = stmt.executeQuery();		   
-		   while(rs.next()){
-			   Asignatura asignatura = new Asignatura();
-			   asignatura.setAsignatura(rs.getString(1));
-			   asignatura.setNota(rs.getFloat(2));
-			   asignatura.setDesarrollo(rs.getFloat(3));
-			   asignatura.setBaseDeDatos(rs.getFloat(4));
-			   asignatura.setRedes(rs.getFloat(5));
-			   asignaturas.add(asignatura);
-		   } 
-	   }catch (Exception ex){
-		   System.out.println("Log In failed: An Exception has occurred! " + ex);
-		   return null;
-	   }
-
-	   return asignaturas;
-   }
-   
 }
 

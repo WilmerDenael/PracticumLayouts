@@ -1,7 +1,6 @@
 package com.practicum.dao;
 
 import java.sql.*;
-import java.util.Date;
 
 import com.practicum.dao.ConnectionManager;
 import com.practicum.util.UserBean;
@@ -19,7 +18,6 @@ public class UserDAO
       Statement stmt = null;    
 	
       int rut = bean.getRut();    
-      String password = bean.getPassword();   
       //rut=rut.toUpperCase();   
       String searchQuery =
             "select (tipo) from usuarios where id="

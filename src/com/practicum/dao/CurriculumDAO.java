@@ -27,7 +27,7 @@ public class CurriculumDAO {
 		        	 for (DatoAcademico datoAcademico : academicos) {
 		        		 String query2 = "Insert into datos_academicos (run,id_curriculum,establecimiento,fin,descripcion) values ("+curriculum.getId()+","+bean.getRut()+",'"+datoAcademico.getEstablecimiento()+"',"+datoAcademico.getFin()+")";// OJO CON LOS DATE
 		        		 stmt=currentCon.createStatement();
-		        		 stmt.executeUpdate(query);
+		        		 stmt.executeUpdate(query2);
 		        	 }					
 				}
 		         List<HistorialLaboral> laborales=curriculum.getLaborales();
@@ -35,7 +35,7 @@ public class CurriculumDAO {
 		        	 for (HistorialLaboral historialLaboral : laborales) {
 		        		 String query2 = "Insert into historial_laboral (run,id_curriculum,establecimiento,cargo,inicio,fin,descripcion) values ("+curriculum.getId()+","+bean.getRut()+",'"+historialLaboral.getEstablecimiento()+"',"+historialLaboral.getInicio()+","+historialLaboral.getFin()+")"; // OJO CON LOS DATE
 		        		 stmt=currentCon.createStatement();
-		        		 stmt.executeUpdate(query);
+		        		 stmt.executeUpdate(query2);
 		        	 }					
 				}
 		         List<Idioma> idiomas= curriculum.getIdiomas();
@@ -43,7 +43,7 @@ public class CurriculumDAO {
 		        	 for (Idioma idioma : idiomas) {
 		        		 String query2 = "Insert into manejo_idiomas (run,id_curriculum,idioma,nivel) values ("+curriculum.getId()+","+bean.getRut()+",'"+idioma.getIdioma()+"','"+idioma.getNivel()+"')"; 
 		        		 stmt=currentCon.createStatement();
-		        		 stmt.executeUpdate(query);					
+		        		 stmt.executeUpdate(query2);					
 		        	 } 
 				}
 		   }catch (Exception ex) {

@@ -57,25 +57,4 @@ public class GenericDAO {
 		  }
 		  return idiomas;
 	  }
-	 
-	 public static List<Asignatura> cargarAsignaturas(){
-		 List<Asignatura> asignaturas = new ArrayList<Asignatura>();
-		  Statement stmt = null;
-		  String query = "Select asignatura from asignaturas";
-		  try{
-			  currentCon = ConnectionManager.getConnection();
-			  stmt = currentCon.createStatement();
-			   rs = stmt.executeQuery(query);
-			   Asignatura asignatura;
-			   while(rs.next()){
-				   asignatura = new Asignatura();
-				   asignatura.setAsignatura(rs.getString(1));
-				   asignaturas.add(asignatura);
-			   } 
-			 System.out.println("Se cargaron: " + asignaturas.size() + " idioma(s)"); 
-		  }catch(Exception ex){
-			System.out.println("Error en la carga de Idiomas " + ex); 
-		  }
-		  return asignaturas;
-	 }
 }
