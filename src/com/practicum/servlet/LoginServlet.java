@@ -32,11 +32,9 @@ try
     	 if (prueba.getType()==1) {
     		 System.out.println("Usuario Valido de tipo alumno");
     		 user = new AlumnoBean();
-    		 System.out.println("Prueba type: "+prueba.getType());
     		 user.parseUserBean(prueba);
     		 user=AlumnoDAO.login(user);
     		 if(user.isLegit()){
-    			 System.out.println("User tipe: "+user.getType());
     			  System.out.println("Usuario esta correcto, realizando la carga de datos");
     			  AlumnoBean alumnoUser= new AlumnoBean();
     			  alumnoUser = AlumnoDAO.selectAlumno(user);    			  
