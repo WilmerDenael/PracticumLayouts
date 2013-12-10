@@ -88,11 +88,11 @@ public class IngresarCurriculumServlet extends HttpServlet {
 			
 			for (int i = 2; i <= chl; i++) {
 				laboral = new HistorialLaboral();
-				descripcion_hl = request.getParameter("descripcion_hl"+i);
-				establecimiento_hl = request.getParameter("establecimiento_hl"+i);
-				cargo_hl = request.getParameter("cargo_hl"+i);
-				fechaInicio_hl = request.getParameter("fechaInicio_hl"+i);
-				fechaTermino_hl = request.getParameter("fechaTermino_hl"+i);
+				descripcion_hl = request.getParameter("descripcion_hl:"+i);
+				establecimiento_hl = request.getParameter("establecimiento_hl:"+i);
+				cargo_hl = request.getParameter("cargo_hl:"+i);
+				fechaInicio_hl = request.getParameter("fechaInicio_hl:"+i);
+				fechaTermino_hl = request.getParameter("fechaTermino_hl:"+i);
 				System.out.println(contadorHL + " " + descripcion_hl + " " + establecimiento_hl + " " + cargo_hl + " " + 
 						fechaInicio_hl + " " + fechaTermino_hl);
 				laboral.setDescripcion(descripcion_hl);
@@ -102,6 +102,27 @@ public class IngresarCurriculumServlet extends HttpServlet {
 				laboral.setFin(fechaTermino_hl);
 				laborales.add(laboral);
 			}
+			// datos de idiomas
+			Idioma idiomaI = new Idioma();
+			String contadorID = request.getParameter("contadorID");
+			String idioma = request.getParameter("idioma");
+			String nivel = request.getParameter("nivel");
+			System.out.println(contadorID + " " + idioma + " " + nivel);
+			idiomaI.setIdioma(idioma);
+			idiomaI.setNivel(nivel);
+			listIdiomas.add(idiomaI);
+			int cid = Integer.parseInt(contadorHL);
+			
+			for (int i = 2; i <= cid; i++) {
+				idiomaI = new Idioma();
+				idioma = request.getParameter("idioma:"+i);
+				nivel = request.getParameter("nivel:"+i);
+				System.out.println(contadorID + " " + idioma + " " + nivel);
+				idiomaI.setIdioma(idioma);
+				idiomaI.setNivel(nivel);
+				listIdiomas.add(idiomaI);
+			}
+			
 			System.out.println("Laboral: "+laborales.size());
 			String[] areas = request.getParameterValues("areas[]");
 			AreaInteres interes;
